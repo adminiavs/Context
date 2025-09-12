@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libtest_discovery.so -o lib/libtest_discovery.so CMakeFiles/test_discovery.dir/plugins/discovery/test_discovery/TestDiscoveryPlugin.cpp.o  lib/libragger-core.a /usr/lib/x86_64-linux-gnu/libsqlite3.so 

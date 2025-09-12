@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libtreesitter_parser.so -o lib/libtreesitter_parser.so CMakeFiles/treesitter_parser.dir/plugins/parsers/treesitter_parser/TreeSitterParserPlugin.cpp.o  lib/libragger-core.a /usr/lib/x86_64-linux-gnu/libsqlite3.so 

@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG "CMakeFiles/ragger-gui.dir/src/ui/ragger-gui.cpp.o" -o bin/ragger-gui  lib/libragger-gui-lib.a lib/libragger-core.a /usr/lib/x86_64-linux-gnu/libsqlite3.so 

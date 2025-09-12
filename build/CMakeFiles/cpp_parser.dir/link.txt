@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libcpp_parser.so -o lib/libcpp_parser.so CMakeFiles/cpp_parser.dir/plugins/parsers/cpp_parser/CppParserPlugin.cpp.o  lib/libragger-core.a /usr/lib/x86_64-linux-gnu/libsqlite3.so 

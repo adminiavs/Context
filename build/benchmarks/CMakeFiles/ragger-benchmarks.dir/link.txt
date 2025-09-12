@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG "CMakeFiles/ragger-benchmarks.dir/benchmark_simple.cpp.o" -o ../bin/ragger-benchmarks  ../lib/libragger-core.a /usr/lib/x86_64-linux-gnu/libbenchmark_main.a /usr/lib/x86_64-linux-gnu/libsqlite3.so /usr/lib/x86_64-linux-gnu/libbenchmark.so.1.8.3 

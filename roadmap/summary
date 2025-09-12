@@ -1,0 +1,25 @@
+Executive Summary
+The project is to create a smart, high-speed desktop application for software developers. Think of it as an intelligent assistant that helps a programmer prepare the perfect question for an Artificial Intelligence (AI) model like ChatGPT or Gemini.
+Instead of a developer manually copying and pasting various pieces of code and explaining the context to an AI, this program will do all the heavy lifting automatically. It scans the developer's entire project, understands how all the code fits together, and then packages a comprehensive, context-rich "prompt" that the developer can take to their AI of choice.
+The goal is to get dramatically better and more accurate answers from AI, saving developers significant time and effort when debugging, optimizing, or understanding complex code.
+What is Being Built?
+The developer is building a desktop application with three main components:
+A Code-Aware File Explorer: The program starts by "indexing" an entire folder of code. This is more than just a simple file list; the program reads and understands the code's structure—identifying every function, variable, and class and mapping out how they are all connected. This process is extremely fast and happens in the background.
+A Simple Code Editor: The user will have a familiar interface, similar to popular editors like VS Code, where they can view and edit their files.
+An "AI Prompt Generator" Chat Window: This is the core of the application. A developer can highlight a piece of code (e.g., a function that has a bug) and type a simple command like "fix this" or "make this faster."
+How Does it Work? The "Smart Assistant" Analogy
+Imagine you need to ask a senior expert for help with a complex problem. Instead of just showing them one small piece of the puzzle, you would want to give them all the relevant background information so they can give you the best possible answer.
+This program does exactly that for an AI.
+When the developer asks it to "fix this function," the program automatically:
+Finds the function's definition.
+Identifies other parts of the code that call this function.
+Looks up any custom data types or classes the function uses.
+Gathers relevant comments and documentation.
+It then bundles all this information into a perfectly structured package. The final output is a block of text that the developer can simply click a "Copy" button for. They then paste this expertly crafted prompt into their preferred AI chat service.
+What is the Practical Use?
+The primary benefit is improving the quality and accuracy of AI-assisted coding. This has several practical advantages for any software developer or team:
+Smarter Debugging: When a developer has a bug, the program can gather not just the buggy code, but also the related code that might be causing the issue. The resulting AI prompt leads to much more accurate and helpful debugging suggestions.
+More Effective Optimization: If a developer wants to make their code run faster, the program provides the AI with the function itself, plus information about how and where it's being used. This allows the AI to suggest optimizations that work within the context of the entire project, not just in isolation.
+Faster Onboarding and Code Understanding: A new developer on a team can use the tool to understand a complex piece of code. By asking the program to "explain this," it will generate a prompt that gives an AI all the necessary context to provide a clear and comprehensive explanation.
+Significant Time Savings: Developers currently spend a lot of time manually gathering context for AI prompts. This tool automates that entire process, turning a multi-minute task into a matter of seconds.
+In essence, this application acts as a "RAG Pre-Processor" (Retrieval-Augmented Generation). It retrieves all the necessary information to augment the user's simple request, ensuring the generative AI has a custom-made, perfect dataset to work with, leading to far superior results. It's a lightweight, private, and incredibly fast tool designed to make developers more efficient in the age of AI.

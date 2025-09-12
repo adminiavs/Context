@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libbm25_ranker.so -o lib/libbm25_ranker.so CMakeFiles/bm25_ranker.dir/plugins/rankers/bm25_ranker/BM25RankerPlugin.cpp.o  lib/libragger-core.a /usr/lib/x86_64-linux-gnu/libsqlite3.so 

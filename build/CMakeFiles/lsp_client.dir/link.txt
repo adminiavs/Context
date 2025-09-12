@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,liblsp_client.so -o lib/liblsp_client.so CMakeFiles/lsp_client.dir/plugins/clients/lsp_client/LSPClientPlugin.cpp.o  lib/libragger-core.a /usr/lib/x86_64-linux-gnu/libsqlite3.so 

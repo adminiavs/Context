@@ -1,0 +1,2 @@
+/usr/bin/ar qc lib/libragger-gui-lib.a "CMakeFiles/ragger-gui-lib.dir/src/ui/GUI.cpp.o"
+/usr/bin/ranlib lib/libragger-gui-lib.a

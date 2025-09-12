@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libgit_integration.so -o lib/libgit_integration.so CMakeFiles/git_integration.dir/plugins/integrations/git_integration/GitIntegrationPlugin.cpp.o  lib/libragger-core.a /usr/lib/x86_64-linux-gnu/libsqlite3.so 
