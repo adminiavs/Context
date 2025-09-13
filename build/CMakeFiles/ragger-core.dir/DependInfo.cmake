@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/b/coder/src/core/ComprehensiveContextGenerator.cpp" "CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o" "gcc" "CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o.d"
   "/home/b/coder/src/core/ConfigManager.cpp" "CMakeFiles/ragger-core.dir/src/core/ConfigManager.cpp.o" "gcc" "CMakeFiles/ragger-core.dir/src/core/ConfigManager.cpp.o.d"
   "/home/b/coder/src/core/ContextEngine.cpp" "CMakeFiles/ragger-core.dir/src/core/ContextEngine.cpp.o" "gcc" "CMakeFiles/ragger-core.dir/src/core/ContextEngine.cpp.o.d"
   "/home/b/coder/src/core/EventBus.cpp" "CMakeFiles/ragger-core.dir/src/core/EventBus.cpp.o" "gcc" "CMakeFiles/ragger-core.dir/src/core/EventBus.cpp.o.d"

@@ -48,6 +48,7 @@ add_library(ragger-core STATIC
     src/core/IndexManager.cpp
     src/core/ContextEngine.cpp
     src/core/ConfigManager.cpp
+    src/core/ComprehensiveContextGenerator.cpp
     src/core/Logger.cpp
     src/core/FileUtils.cpp
 )

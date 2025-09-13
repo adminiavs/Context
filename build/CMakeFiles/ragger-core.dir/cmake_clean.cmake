@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o"
+  "CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o.d"
   "CMakeFiles/ragger-core.dir/src/core/ConfigManager.cpp.o"
   "CMakeFiles/ragger-core.dir/src/core/ConfigManager.cpp.o.d"
   "CMakeFiles/ragger-core.dir/src/core/ContextEngine.cpp.o"

@@ -139,10 +139,24 @@ CMakeFiles/ragger-core.dir/src/core/ConfigManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ragger-core.dir/src/core/ConfigManager.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/b/coder/src/core/ConfigManager.cpp -o CMakeFiles/ragger-core.dir/src/core/ConfigManager.cpp.s
 
+CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o: CMakeFiles/ragger-core.dir/flags.make
+CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o: /home/b/coder/src/core/ComprehensiveContextGenerator.cpp
+CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o: CMakeFiles/ragger-core.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o -MF CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o.d -o CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o -c /home/b/coder/src/core/ComprehensiveContextGenerator.cpp
+
+CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/b/coder/src/core/ComprehensiveContextGenerator.cpp > CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.i
+
+CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/b/coder/src/core/ComprehensiveContextGenerator.cpp -o CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.s
+
 CMakeFiles/ragger-core.dir/src/core/Logger.cpp.o: CMakeFiles/ragger-core.dir/flags.make
 CMakeFiles/ragger-core.dir/src/core/Logger.cpp.o: /home/b/coder/src/core/Logger.cpp
 CMakeFiles/ragger-core.dir/src/core/Logger.cpp.o: CMakeFiles/ragger-core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ragger-core.dir/src/core/Logger.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ragger-core.dir/src/core/Logger.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ragger-core.dir/src/core/Logger.cpp.o -MF CMakeFiles/ragger-core.dir/src/core/Logger.cpp.o.d -o CMakeFiles/ragger-core.dir/src/core/Logger.cpp.o -c /home/b/coder/src/core/Logger.cpp
 
 CMakeFiles/ragger-core.dir/src/core/Logger.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/ragger-core.dir/src/core/Logger.cpp.s: cmake_force
 CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o: CMakeFiles/ragger-core.dir/flags.make
 CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o: /home/b/coder/src/core/FileUtils.cpp
 CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o: CMakeFiles/ragger-core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o -MF CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o.d -o CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o -c /home/b/coder/src/core/FileUtils.cpp
 
 CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.i: cmake_force
@@ -174,6 +188,7 @@ ragger__core_OBJECTS = \
 "CMakeFiles/ragger-core.dir/src/core/IndexManager.cpp.o" \
 "CMakeFiles/ragger-core.dir/src/core/ContextEngine.cpp.o" \
 "CMakeFiles/ragger-core.dir/src/core/ConfigManager.cpp.o" \
+"CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o" \
 "CMakeFiles/ragger-core.dir/src/core/Logger.cpp.o" \
 "CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o"
 
@@ -185,11 +200,12 @@ lib/libragger-core.a: CMakeFiles/ragger-core.dir/src/core/PluginManager.cpp.o
 lib/libragger-core.a: CMakeFiles/ragger-core.dir/src/core/IndexManager.cpp.o
 lib/libragger-core.a: CMakeFiles/ragger-core.dir/src/core/ContextEngine.cpp.o
 lib/libragger-core.a: CMakeFiles/ragger-core.dir/src/core/ConfigManager.cpp.o
+lib/libragger-core.a: CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o
 lib/libragger-core.a: CMakeFiles/ragger-core.dir/src/core/Logger.cpp.o
 lib/libragger-core.a: CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o
 lib/libragger-core.a: CMakeFiles/ragger-core.dir/build.make
 lib/libragger-core.a: CMakeFiles/ragger-core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library lib/libragger-core.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX static library lib/libragger-core.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/ragger-core.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ragger-core.dir/link.txt --verbose=$(VERBOSE)
 

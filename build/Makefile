@@ -557,6 +557,30 @@ plugins/rankers/graph_ranker/GraphRankerPlugin.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/graph_ranker.dir/build.make CMakeFiles/graph_ranker.dir/plugins/rankers/graph_ranker/GraphRankerPlugin.cpp.s
 .PHONY : plugins/rankers/graph_ranker/GraphRankerPlugin.cpp.s
 
+src/core/ComprehensiveContextGenerator.o: src/core/ComprehensiveContextGenerator.cpp.o
+.PHONY : src/core/ComprehensiveContextGenerator.o
+
+# target to build an object file
+src/core/ComprehensiveContextGenerator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-core.dir/build.make CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.o
+.PHONY : src/core/ComprehensiveContextGenerator.cpp.o
+
+src/core/ComprehensiveContextGenerator.i: src/core/ComprehensiveContextGenerator.cpp.i
+.PHONY : src/core/ComprehensiveContextGenerator.i
+
+# target to preprocess a source file
+src/core/ComprehensiveContextGenerator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-core.dir/build.make CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.i
+.PHONY : src/core/ComprehensiveContextGenerator.cpp.i
+
+src/core/ComprehensiveContextGenerator.s: src/core/ComprehensiveContextGenerator.cpp.s
+.PHONY : src/core/ComprehensiveContextGenerator.s
+
+# target to generate assembly for a file
+src/core/ComprehensiveContextGenerator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-core.dir/build.make CMakeFiles/ragger-core.dir/src/core/ComprehensiveContextGenerator.cpp.s
+.PHONY : src/core/ComprehensiveContextGenerator.cpp.s
+
 src/core/ConfigManager.o: src/core/ConfigManager.cpp.o
 .PHONY : src/core/ConfigManager.o
 
@@ -920,6 +944,9 @@ help:
 	@echo "... plugins/rankers/graph_ranker/GraphRankerPlugin.o"
 	@echo "... plugins/rankers/graph_ranker/GraphRankerPlugin.i"
 	@echo "... plugins/rankers/graph_ranker/GraphRankerPlugin.s"
+	@echo "... src/core/ComprehensiveContextGenerator.o"
+	@echo "... src/core/ComprehensiveContextGenerator.i"
+	@echo "... src/core/ComprehensiveContextGenerator.s"
 	@echo "... src/core/ConfigManager.o"
 	@echo "... src/core/ConfigManager.i"
 	@echo "... src/core/ConfigManager.s"

@@ -12,6 +12,7 @@
 #include "IndexManager.h"
 #include "ContextEngine.h"
 #include "PluginManager.h"
+#include "ComprehensiveContextGenerator.h"
 
 namespace Ragger {
 namespace Console {
@@ -28,6 +29,7 @@ private:
     IndexManager* m_indexManager;
     ContextEngine* m_contextEngine;
     PluginManager* m_pluginManager;
+    Ragger::Core::ComprehensiveContextGenerator* m_contextGenerator;
 
 public:
     RaggerConsoleInterface() {
@@ -36,6 +38,7 @@ public:
         m_indexManager = nullptr;
         m_contextEngine = nullptr;
         m_pluginManager = nullptr;
+        m_contextGenerator = nullptr;
     }
 
     ~RaggerConsoleInterface() {
@@ -53,6 +56,13 @@ public:
             m_indexManager = new IndexManager();
             m_contextEngine = new ContextEngine(m_eventBus);
             m_pluginManager = new PluginManager(m_eventBus);
+            m_contextGenerator = new Ragger::Core::ComprehensiveContextGenerator();
+            
+            // Initialize the comprehensive context generator
+            if (!m_contextGenerator->initialize()) {
+                std::cerr << "Failed to initialize comprehensive context generator" << std::endl;
+                return false;
+            }
 
             // Initialize components
             if (m_configManager->initialize() != RAGGER_SUCCESS) {
@@ -252,8 +262,13 @@ private:
             targetFile = "plugins/integrations/git_integration/GitIntegrationPlugin.cpp";
         }
         
-        // Generate comprehensive context
-        std::cout << "\n" << generateComprehensiveContext(targetFile, query, 1, 50) << std::endl;
+        // Generate comprehensive context using the new context generator
+        if (m_contextGenerator) {
+            std::string context = m_contextGenerator->generateComprehensiveContext(targetFile, query, 1, 50);
+            std::cout << "\n" << context << std::endl;
+        } else {
+            std::cout << "\n" << generateComprehensiveContext(targetFile, query, 1, 50) << std::endl;
+        }
         
         std::cout << "\n=== RELEVANT CODE BLOCKS ===" << std::endl;
         std::cout << "Based on your query, here are the relevant code sections:" << std::endl;
@@ -339,6 +354,11 @@ private:
     }
 
     void cleanup() {
+        if (m_contextGenerator) {
+            delete m_contextGenerator;
+            m_contextGenerator = nullptr;
+        }
+        
         if (m_indexManager) {
             m_indexManager->shutdown();
             delete m_indexManager;
