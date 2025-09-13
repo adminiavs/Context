@@ -136,12 +136,56 @@ if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/ragger-gui.cpp")
     )
 endif()
 
+# Simple Console Interface (working version)
+add_executable(ragger-console
+    src/ui/simple_console.cpp
+)
+
+target_link_libraries(ragger-console
+    PRIVATE
+        ragger-core
+)
+
+target_include_directories(ragger-console PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/api
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core
+)
+
+# Working GUI Application (with Dear ImGui)
+add_executable(ragger-working-gui
+    src/ui/working_gui.cpp
+)
+
+target_link_libraries(ragger-working-gui
+    PRIVATE
+        ragger-core
+        glfw
+        GL
+)
+
+if(IMGUI_FOUND)
+    target_link_libraries(ragger-working-gui PRIVATE ${IMGUI_LIBRARIES})
+    target_include_directories(ragger-working-gui PRIVATE ${IMGUI_INCLUDE_DIRS})
+    target_compile_definitions(ragger-working-gui PRIVATE RAGGER_HAS_IMGUI)
+endif()
+
+target_include_directories(ragger-working-gui PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/api
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core
+)
+
 # TODO: Add Dear ImGui support later
-# find_package(imgui)
-# if(imgui_FOUND)
-#     target_link_libraries(ragger-gui-lib PRIVATE imgui::imgui)
-#     target_compile_definitions(ragger-gui-lib PRIVATE RAGGER_HAS_IMGUI)
-# endif()
+# Find Dear ImGui
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(IMGUI REQUIRED imgui)
+
+if(IMGUI_FOUND)
+    target_link_libraries(ragger-gui-lib PRIVATE ${IMGUI_LIBRARIES})
+    target_include_directories(ragger-gui-lib PRIVATE ${IMGUI_INCLUDE_DIRS})
+    target_compile_definitions(ragger-gui-lib PRIVATE RAGGER_HAS_IMGUI)
+endif()
 
 # Plugins (basic versions for now)
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/parsers/cpp_parser/CppParserPlugin.cpp")

@@ -2,6 +2,8 @@
 /home/b/coder/build/CMakeFiles/ragger.dir
 /home/b/coder/build/CMakeFiles/ragger-gui-lib.dir
 /home/b/coder/build/CMakeFiles/ragger-gui.dir
+/home/b/coder/build/CMakeFiles/ragger-console.dir
+/home/b/coder/build/CMakeFiles/ragger-working-gui.dir
 /home/b/coder/build/CMakeFiles/cpp_parser.dir
 /home/b/coder/build/CMakeFiles/bm25_ranker.dir
 /home/b/coder/build/CMakeFiles/treesitter_parser.dir

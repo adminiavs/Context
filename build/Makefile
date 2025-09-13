@@ -234,6 +234,32 @@ ragger-gui/fast:
 .PHONY : ragger-gui/fast
 
 #=============================================================================
+# Target rules for targets named ragger-console
+
+# Build rule for target.
+ragger-console: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ragger-console
+.PHONY : ragger-console
+
+# fast build rule for target.
+ragger-console/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-console.dir/build.make CMakeFiles/ragger-console.dir/build
+.PHONY : ragger-console/fast
+
+#=============================================================================
+# Target rules for targets named ragger-working-gui
+
+# Build rule for target.
+ragger-working-gui: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ragger-working-gui
+.PHONY : ragger-working-gui
+
+# fast build rule for target.
+ragger-working-gui/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-working-gui.dir/build.make CMakeFiles/ragger-working-gui.dir/build
+.PHONY : ragger-working-gui/fast
+
+#=============================================================================
 # Target rules for targets named cpp_parser
 
 # Build rule for target.
@@ -795,6 +821,54 @@ src/ui/ragger-gui.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-gui.dir/build.make CMakeFiles/ragger-gui.dir/src/ui/ragger-gui.cpp.s
 .PHONY : src/ui/ragger-gui.cpp.s
 
+src/ui/simple_console.o: src/ui/simple_console.cpp.o
+.PHONY : src/ui/simple_console.o
+
+# target to build an object file
+src/ui/simple_console.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-console.dir/build.make CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o
+.PHONY : src/ui/simple_console.cpp.o
+
+src/ui/simple_console.i: src/ui/simple_console.cpp.i
+.PHONY : src/ui/simple_console.i
+
+# target to preprocess a source file
+src/ui/simple_console.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-console.dir/build.make CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.i
+.PHONY : src/ui/simple_console.cpp.i
+
+src/ui/simple_console.s: src/ui/simple_console.cpp.s
+.PHONY : src/ui/simple_console.s
+
+# target to generate assembly for a file
+src/ui/simple_console.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-console.dir/build.make CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.s
+.PHONY : src/ui/simple_console.cpp.s
+
+src/ui/working_gui.o: src/ui/working_gui.cpp.o
+.PHONY : src/ui/working_gui.o
+
+# target to build an object file
+src/ui/working_gui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-working-gui.dir/build.make CMakeFiles/ragger-working-gui.dir/src/ui/working_gui.cpp.o
+.PHONY : src/ui/working_gui.cpp.o
+
+src/ui/working_gui.i: src/ui/working_gui.cpp.i
+.PHONY : src/ui/working_gui.i
+
+# target to preprocess a source file
+src/ui/working_gui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-working-gui.dir/build.make CMakeFiles/ragger-working-gui.dir/src/ui/working_gui.cpp.i
+.PHONY : src/ui/working_gui.cpp.i
+
+src/ui/working_gui.s: src/ui/working_gui.cpp.s
+.PHONY : src/ui/working_gui.s
+
+# target to generate assembly for a file
+src/ui/working_gui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-working-gui.dir/build.make CMakeFiles/ragger-working-gui.dir/src/ui/working_gui.cpp.s
+.PHONY : src/ui/working_gui.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -816,11 +890,13 @@ help:
 	@echo "... lsp_client"
 	@echo "... ragger"
 	@echo "... ragger-benchmarks"
+	@echo "... ragger-console"
 	@echo "... ragger-core"
 	@echo "... ragger-dev"
 	@echo "... ragger-gui"
 	@echo "... ragger-gui-lib"
 	@echo "... ragger-tests"
+	@echo "... ragger-working-gui"
 	@echo "... test_discovery"
 	@echo "... treesitter_parser"
 	@echo "... plugins/clients/lsp_client/LSPClientPlugin.o"
@@ -877,6 +953,12 @@ help:
 	@echo "... src/ui/ragger-gui.o"
 	@echo "... src/ui/ragger-gui.i"
 	@echo "... src/ui/ragger-gui.s"
+	@echo "... src/ui/simple_console.o"
+	@echo "... src/ui/simple_console.i"
+	@echo "... src/ui/simple_console.s"
+	@echo "... src/ui/working_gui.o"
+	@echo "... src/ui/working_gui.i"
+	@echo "... src/ui/working_gui.s"
 .PHONY : help
 
 

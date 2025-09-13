@@ -278,6 +278,12 @@ GTEST_MAIN_LIBRARY_DEBUG:FILEPATH=GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND
 //The directory containing a CMake configuration file for GTest.
 GTest_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/GTest
 
+//Arguments to supply to pkg-config
+PKG_CONFIG_ARGN:STRING=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
 //Value Computed by CMake
 RAGger_BINARY_DIR:STATIC=/home/b/coder/build
 
@@ -298,6 +304,12 @@ benchmark_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/benchmark
 
 //The directory containing a CMake configuration file for nlohmann_json.
 nlohmann_json_DIR:PATH=nlohmann_json_DIR-NOTFOUND
+
+//Path to a library.
+pkgcfg_lib_IMGUI_imgui:FILEPATH=/usr/lib/x86_64-linux-gnu/libimgui.a
+
+//Path to a library.
+pkgcfg_lib_IMGUI_stb:FILEPATH=/usr/lib/x86_64-linux-gnu/libstb.so
 
 //The directory containing a CMake configuration file for spdlog.
 spdlog_DIR:PATH=spdlog_DIR-NOTFOUND
@@ -468,6 +480,8 @@ CPACK_SOURCE_TZ-ADVANCED:INTERNAL=1
 CPACK_SOURCE_ZIP-ADVANCED:INTERNAL=1
 //Details about finding GTest
 FIND_PACKAGE_MESSAGE_DETAILS_GTest:INTERNAL=[/usr/lib/x86_64-linux-gnu/cmake/GTest/GTestConfig.cmake][c ][v1.14.0()]
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v1.8.1()]
 //Details about finding SQLite3
 FIND_PACKAGE_MESSAGE_DETAILS_SQLite3:INTERNAL=[/usr/include][/usr/lib/x86_64-linux-gnu/libsqlite3.so][v3.45.1()]
 //Details about finding Threads
@@ -490,10 +504,56 @@ GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+IMGUI_CFLAGS:INTERNAL=-I/usr/include/imgui;-I/usr/include/stb
+IMGUI_CFLAGS_I:INTERNAL=
+IMGUI_CFLAGS_OTHER:INTERNAL=
+IMGUI_FOUND:INTERNAL=1
+IMGUI_INCLUDEDIR:INTERNAL=/usr/include/imgui
+IMGUI_INCLUDE_DIRS:INTERNAL=/usr/include/imgui;/usr/include/stb
+IMGUI_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-limgui;-lstb
+IMGUI_LDFLAGS_OTHER:INTERNAL=
+IMGUI_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+IMGUI_LIBRARIES:INTERNAL=imgui;stb
+IMGUI_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+IMGUI_LIBS:INTERNAL=
+IMGUI_LIBS_L:INTERNAL=
+IMGUI_LIBS_OTHER:INTERNAL=
+IMGUI_LIBS_PATHS:INTERNAL=
+IMGUI_MODULE_NAME:INTERNAL=imgui
+IMGUI_PREFIX:INTERNAL=/usr
+IMGUI_STATIC_CFLAGS:INTERNAL=-I/usr/include/imgui;-I/usr/include/stb
+IMGUI_STATIC_CFLAGS_I:INTERNAL=
+IMGUI_STATIC_CFLAGS_OTHER:INTERNAL=
+IMGUI_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/imgui;/usr/include/stb
+IMGUI_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-limgui;-lm;-lstb
+IMGUI_STATIC_LDFLAGS_OTHER:INTERNAL=
+IMGUI_STATIC_LIBDIR:INTERNAL=
+IMGUI_STATIC_LIBRARIES:INTERNAL=imgui;m;stb
+IMGUI_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+IMGUI_STATIC_LIBS:INTERNAL=
+IMGUI_STATIC_LIBS_L:INTERNAL=
+IMGUI_STATIC_LIBS_OTHER:INTERNAL=
+IMGUI_STATIC_LIBS_PATHS:INTERNAL=
+IMGUI_VERSION:INTERNAL=1.90.1
+IMGUI_imgui_INCLUDEDIR:INTERNAL=
+IMGUI_imgui_LIBDIR:INTERNAL=
+IMGUI_imgui_PREFIX:INTERNAL=
+IMGUI_imgui_VERSION:INTERNAL=
+//ADVANCED property for variable: PKG_CONFIG_ARGN
+PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SQLite3_INCLUDE_DIR
 SQLite3_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SQLite3_LIBRARY
 SQLite3_LIBRARY-ADVANCED:INTERNAL=1
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
+__pkg_config_arguments_IMGUI:INTERNAL=REQUIRED;imgui
+__pkg_config_checked_IMGUI:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_IMGUI_imgui
+pkgcfg_lib_IMGUI_imgui-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_IMGUI_stb
+pkgcfg_lib_IMGUI_stb-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=/usr/lib/x86_64-linux-gnu
 
