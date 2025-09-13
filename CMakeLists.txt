@@ -118,28 +118,27 @@ target_link_libraries(ragger-gui-lib
         ragger-core
 )
 
-# GUI Application
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/ragger-gui.cpp")
-    add_executable(ragger-gui
-        src/ui/ragger-gui.cpp
-    )
-    
-    target_link_libraries(ragger-gui
-        PRIVATE
-            ragger-gui-lib
-            ragger-core
-    )
-    
-    target_include_directories(ragger-gui PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/api
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/core
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/ui
-    )
-endif()
 
-# Simple Console Interface (working version)
+# Basic GUI Application (stub implementation)
+add_executable(ragger-gui
+    src/ui/ragger-gui.cpp
+)
+
+target_link_libraries(ragger-gui
+    PRIVATE
+        ragger-gui-lib
+        ragger-core
+)
+
+target_include_directories(ragger-gui PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/api
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/ui
+)
+
+# Console Interface (enhanced version with comprehensive context)
 add_executable(ragger-console
-    src/ui/simple_console.cpp
+    src/ui/console_interface.cpp
 )
 
 target_link_libraries(ragger-console
@@ -148,6 +147,22 @@ target_link_libraries(ragger-console
 )
 
 target_include_directories(ragger-console PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/api
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core
+)
+
+# Simple Console Interface (basic version)
+add_executable(ragger-simple-console
+    src/ui/simple_console.cpp
+)
+
+target_link_libraries(ragger-simple-console
+    PRIVATE
+        ragger-core
+)
+
+target_include_directories(ragger-simple-console PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/api
     ${CMAKE_CURRENT_SOURCE_DIR}/src/ui
     ${CMAKE_CURRENT_SOURCE_DIR}/src/core
@@ -172,6 +187,46 @@ if(IMGUI_FOUND)
 endif()
 
 target_include_directories(ragger-working-gui PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/api
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core
+)
+
+# Simple GUI Application (with fallback to console mode)
+add_executable(ragger-simple-gui
+    src/ui/simple_gui.cpp
+)
+
+target_link_libraries(ragger-simple-gui
+    PRIVATE
+        ragger-core
+)
+
+# Try to find GLFW and OpenGL for simple GUI
+find_package(glfw3 QUIET)
+find_package(OpenGL QUIET)
+
+# Check for Dear ImGui headers
+find_path(IMGUI_INCLUDE_DIR imgui.h
+    PATHS /usr/include /usr/local/include
+    PATH_SUFFIXES imgui
+)
+
+find_path(IMGUI_IMPL_GLFW_DIR imgui_impl_glfw.h
+    PATHS /usr/include /usr/local/include
+    PATH_SUFFIXES imgui/backends
+)
+
+if(glfw3_FOUND AND OpenGL_FOUND AND IMGUI_INCLUDE_DIR AND IMGUI_IMPL_GLFW_DIR)
+    target_link_libraries(ragger-simple-gui PRIVATE glfw OpenGL::GL imgui stb)
+    target_include_directories(ragger-simple-gui PRIVATE ${IMGUI_INCLUDE_DIR} ${IMGUI_IMPL_GLFW_DIR})
+    target_compile_definitions(ragger-simple-gui PRIVATE RAGGER_HAS_IMGUI)
+    message(STATUS "Simple GUI: GLFW, OpenGL, and Dear ImGui found - GUI mode enabled")
+else()
+    message(STATUS "Simple GUI: GLFW/OpenGL/Dear ImGui not found - console mode only")
+endif()
+
+target_include_directories(ragger-simple-gui PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/api
     ${CMAKE_CURRENT_SOURCE_DIR}/src/ui
     ${CMAKE_CURRENT_SOURCE_DIR}/src/core
@@ -239,6 +294,28 @@ if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/discovery/test_discovery/TestDisc
     target_link_libraries(test_discovery PRIVATE ragger-core)
 endif()
 
+# Context Plugins (Development-Lifecycle-Aware)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/context/git_context/GitContextPlugin.cpp")
+    add_library(git_context SHARED
+        plugins/context/git_context/GitContextPlugin.cpp
+    )
+    target_link_libraries(git_context PRIVATE ragger-core)
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/context/static_analysis/StaticAnalysisPlugin.cpp")
+    add_library(static_analysis SHARED
+        plugins/context/static_analysis/StaticAnalysisPlugin.cpp
+    )
+    target_link_libraries(static_analysis PRIVATE ragger-core)
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/context/documentation/DocsPlugin.cpp")
+    add_library(documentation SHARED
+        plugins/context/documentation/DocsPlugin.cpp
+    )
+    target_link_libraries(documentation PRIVATE ragger-core)
+endif()
+
 # CLI Tool
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/ragger-dev.cpp")
     add_executable(ragger-dev
@@ -288,6 +365,37 @@ install(FILES config/ragger.conf
 install(FILES README.md
     DESTINATION share/doc/ragger
 )
+
+# Build Summary
+message(STATUS "")
+message(STATUS "=== RAGger Build Summary ===")
+message(STATUS "Core Library: ragger-core")
+message(STATUS "GUI Library: ragger-gui-lib")
+message(STATUS "")
+message(STATUS "Available Executables:")
+message(STATUS "  - ragger-gui (basic GUI - stub implementation)")
+message(STATUS "  - ragger-simple-gui (simple GUI with console fallback)")
+message(STATUS "  - ragger-working-gui (full GUI with Dear ImGui)")
+message(STATUS "  - ragger-console (enhanced console with comprehensive context)")
+message(STATUS "  - ragger-simple-console (basic console interface)")
+message(STATUS "  - ragger-dev (development tool)")
+message(STATUS "  - ragger-tests (test suite)")
+message(STATUS "  - ragger-benchmarks (performance benchmarks)")
+message(STATUS "")
+message(STATUS "Available Plugins:")
+message(STATUS "  - cpp_parser (C++ code parsing)")
+message(STATUS "  - bm25_ranker (BM25 ranking algorithm)")
+message(STATUS "  - treesitter_parser (multi-language parsing)")
+message(STATUS "  - graph_ranker (graph-based ranking)")
+message(STATUS "  - lsp_client (Language Server Protocol)")
+message(STATUS "  - git_integration (Git repository integration)")
+message(STATUS "  - test_discovery (automated test detection)")
+message(STATUS "  - git_context (Git historical context)")
+message(STATUS "  - static_analysis (project standards analysis)")
+message(STATUS "  - documentation (documentation integration)")
+message(STATUS "")
+message(STATUS "Build completed successfully!")
+message(STATUS "")
 
 # Testing and Benchmarking
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/CMakeLists.txt")

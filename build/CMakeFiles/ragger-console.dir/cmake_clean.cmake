@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o"
-  "CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o.d"
+  "CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o"
+  "CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o.d"
   "bin/ragger-console"
   "bin/ragger-console.pdb"
 )

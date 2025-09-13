@@ -247,6 +247,19 @@ ragger-console/fast:
 .PHONY : ragger-console/fast
 
 #=============================================================================
+# Target rules for targets named ragger-simple-console
+
+# Build rule for target.
+ragger-simple-console: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ragger-simple-console
+.PHONY : ragger-simple-console
+
+# fast build rule for target.
+ragger-simple-console/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-console.dir/build.make CMakeFiles/ragger-simple-console.dir/build
+.PHONY : ragger-simple-console/fast
+
+#=============================================================================
 # Target rules for targets named ragger-working-gui
 
 # Build rule for target.
@@ -258,6 +271,19 @@ ragger-working-gui: cmake_check_build_system
 ragger-working-gui/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-working-gui.dir/build.make CMakeFiles/ragger-working-gui.dir/build
 .PHONY : ragger-working-gui/fast
+
+#=============================================================================
+# Target rules for targets named ragger-simple-gui
+
+# Build rule for target.
+ragger-simple-gui: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ragger-simple-gui
+.PHONY : ragger-simple-gui
+
+# fast build rule for target.
+ragger-simple-gui/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-gui.dir/build.make CMakeFiles/ragger-simple-gui.dir/build
+.PHONY : ragger-simple-gui/fast
 
 #=============================================================================
 # Target rules for targets named cpp_parser
@@ -351,6 +377,45 @@ test_discovery/fast:
 .PHONY : test_discovery/fast
 
 #=============================================================================
+# Target rules for targets named git_context
+
+# Build rule for target.
+git_context: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 git_context
+.PHONY : git_context
+
+# fast build rule for target.
+git_context/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/git_context.dir/build.make CMakeFiles/git_context.dir/build
+.PHONY : git_context/fast
+
+#=============================================================================
+# Target rules for targets named static_analysis
+
+# Build rule for target.
+static_analysis: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 static_analysis
+.PHONY : static_analysis
+
+# fast build rule for target.
+static_analysis/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/static_analysis.dir/build.make CMakeFiles/static_analysis.dir/build
+.PHONY : static_analysis/fast
+
+#=============================================================================
+# Target rules for targets named documentation
+
+# Build rule for target.
+documentation: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 documentation
+.PHONY : documentation
+
+# fast build rule for target.
+documentation/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/documentation.dir/build.make CMakeFiles/documentation.dir/build
+.PHONY : documentation/fast
+
+#=============================================================================
 # Target rules for targets named ragger-dev
 
 # Build rule for target.
@@ -412,6 +477,78 @@ plugins/clients/lsp_client/LSPClientPlugin.s: plugins/clients/lsp_client/LSPClie
 plugins/clients/lsp_client/LSPClientPlugin.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lsp_client.dir/build.make CMakeFiles/lsp_client.dir/plugins/clients/lsp_client/LSPClientPlugin.cpp.s
 .PHONY : plugins/clients/lsp_client/LSPClientPlugin.cpp.s
+
+plugins/context/documentation/DocsPlugin.o: plugins/context/documentation/DocsPlugin.cpp.o
+.PHONY : plugins/context/documentation/DocsPlugin.o
+
+# target to build an object file
+plugins/context/documentation/DocsPlugin.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/documentation.dir/build.make CMakeFiles/documentation.dir/plugins/context/documentation/DocsPlugin.cpp.o
+.PHONY : plugins/context/documentation/DocsPlugin.cpp.o
+
+plugins/context/documentation/DocsPlugin.i: plugins/context/documentation/DocsPlugin.cpp.i
+.PHONY : plugins/context/documentation/DocsPlugin.i
+
+# target to preprocess a source file
+plugins/context/documentation/DocsPlugin.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/documentation.dir/build.make CMakeFiles/documentation.dir/plugins/context/documentation/DocsPlugin.cpp.i
+.PHONY : plugins/context/documentation/DocsPlugin.cpp.i
+
+plugins/context/documentation/DocsPlugin.s: plugins/context/documentation/DocsPlugin.cpp.s
+.PHONY : plugins/context/documentation/DocsPlugin.s
+
+# target to generate assembly for a file
+plugins/context/documentation/DocsPlugin.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/documentation.dir/build.make CMakeFiles/documentation.dir/plugins/context/documentation/DocsPlugin.cpp.s
+.PHONY : plugins/context/documentation/DocsPlugin.cpp.s
+
+plugins/context/git_context/GitContextPlugin.o: plugins/context/git_context/GitContextPlugin.cpp.o
+.PHONY : plugins/context/git_context/GitContextPlugin.o
+
+# target to build an object file
+plugins/context/git_context/GitContextPlugin.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/git_context.dir/build.make CMakeFiles/git_context.dir/plugins/context/git_context/GitContextPlugin.cpp.o
+.PHONY : plugins/context/git_context/GitContextPlugin.cpp.o
+
+plugins/context/git_context/GitContextPlugin.i: plugins/context/git_context/GitContextPlugin.cpp.i
+.PHONY : plugins/context/git_context/GitContextPlugin.i
+
+# target to preprocess a source file
+plugins/context/git_context/GitContextPlugin.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/git_context.dir/build.make CMakeFiles/git_context.dir/plugins/context/git_context/GitContextPlugin.cpp.i
+.PHONY : plugins/context/git_context/GitContextPlugin.cpp.i
+
+plugins/context/git_context/GitContextPlugin.s: plugins/context/git_context/GitContextPlugin.cpp.s
+.PHONY : plugins/context/git_context/GitContextPlugin.s
+
+# target to generate assembly for a file
+plugins/context/git_context/GitContextPlugin.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/git_context.dir/build.make CMakeFiles/git_context.dir/plugins/context/git_context/GitContextPlugin.cpp.s
+.PHONY : plugins/context/git_context/GitContextPlugin.cpp.s
+
+plugins/context/static_analysis/StaticAnalysisPlugin.o: plugins/context/static_analysis/StaticAnalysisPlugin.cpp.o
+.PHONY : plugins/context/static_analysis/StaticAnalysisPlugin.o
+
+# target to build an object file
+plugins/context/static_analysis/StaticAnalysisPlugin.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/static_analysis.dir/build.make CMakeFiles/static_analysis.dir/plugins/context/static_analysis/StaticAnalysisPlugin.cpp.o
+.PHONY : plugins/context/static_analysis/StaticAnalysisPlugin.cpp.o
+
+plugins/context/static_analysis/StaticAnalysisPlugin.i: plugins/context/static_analysis/StaticAnalysisPlugin.cpp.i
+.PHONY : plugins/context/static_analysis/StaticAnalysisPlugin.i
+
+# target to preprocess a source file
+plugins/context/static_analysis/StaticAnalysisPlugin.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/static_analysis.dir/build.make CMakeFiles/static_analysis.dir/plugins/context/static_analysis/StaticAnalysisPlugin.cpp.i
+.PHONY : plugins/context/static_analysis/StaticAnalysisPlugin.cpp.i
+
+plugins/context/static_analysis/StaticAnalysisPlugin.s: plugins/context/static_analysis/StaticAnalysisPlugin.cpp.s
+.PHONY : plugins/context/static_analysis/StaticAnalysisPlugin.s
+
+# target to generate assembly for a file
+plugins/context/static_analysis/StaticAnalysisPlugin.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/static_analysis.dir/build.make CMakeFiles/static_analysis.dir/plugins/context/static_analysis/StaticAnalysisPlugin.cpp.s
+.PHONY : plugins/context/static_analysis/StaticAnalysisPlugin.cpp.s
 
 plugins/discovery/test_discovery/TestDiscoveryPlugin.o: plugins/discovery/test_discovery/TestDiscoveryPlugin.cpp.o
 .PHONY : plugins/discovery/test_discovery/TestDiscoveryPlugin.o
@@ -821,6 +958,30 @@ src/ui/GUI.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-gui-lib.dir/build.make CMakeFiles/ragger-gui-lib.dir/src/ui/GUI.cpp.s
 .PHONY : src/ui/GUI.cpp.s
 
+src/ui/console_interface.o: src/ui/console_interface.cpp.o
+.PHONY : src/ui/console_interface.o
+
+# target to build an object file
+src/ui/console_interface.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-console.dir/build.make CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o
+.PHONY : src/ui/console_interface.cpp.o
+
+src/ui/console_interface.i: src/ui/console_interface.cpp.i
+.PHONY : src/ui/console_interface.i
+
+# target to preprocess a source file
+src/ui/console_interface.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-console.dir/build.make CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.i
+.PHONY : src/ui/console_interface.cpp.i
+
+src/ui/console_interface.s: src/ui/console_interface.cpp.s
+.PHONY : src/ui/console_interface.s
+
+# target to generate assembly for a file
+src/ui/console_interface.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-console.dir/build.make CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.s
+.PHONY : src/ui/console_interface.cpp.s
+
 src/ui/ragger-gui.o: src/ui/ragger-gui.cpp.o
 .PHONY : src/ui/ragger-gui.o
 
@@ -850,7 +1011,7 @@ src/ui/simple_console.o: src/ui/simple_console.cpp.o
 
 # target to build an object file
 src/ui/simple_console.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-console.dir/build.make CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-console.dir/build.make CMakeFiles/ragger-simple-console.dir/src/ui/simple_console.cpp.o
 .PHONY : src/ui/simple_console.cpp.o
 
 src/ui/simple_console.i: src/ui/simple_console.cpp.i
@@ -858,7 +1019,7 @@ src/ui/simple_console.i: src/ui/simple_console.cpp.i
 
 # target to preprocess a source file
 src/ui/simple_console.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-console.dir/build.make CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-console.dir/build.make CMakeFiles/ragger-simple-console.dir/src/ui/simple_console.cpp.i
 .PHONY : src/ui/simple_console.cpp.i
 
 src/ui/simple_console.s: src/ui/simple_console.cpp.s
@@ -866,8 +1027,32 @@ src/ui/simple_console.s: src/ui/simple_console.cpp.s
 
 # target to generate assembly for a file
 src/ui/simple_console.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-console.dir/build.make CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-console.dir/build.make CMakeFiles/ragger-simple-console.dir/src/ui/simple_console.cpp.s
 .PHONY : src/ui/simple_console.cpp.s
+
+src/ui/simple_gui.o: src/ui/simple_gui.cpp.o
+.PHONY : src/ui/simple_gui.o
+
+# target to build an object file
+src/ui/simple_gui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-gui.dir/build.make CMakeFiles/ragger-simple-gui.dir/src/ui/simple_gui.cpp.o
+.PHONY : src/ui/simple_gui.cpp.o
+
+src/ui/simple_gui.i: src/ui/simple_gui.cpp.i
+.PHONY : src/ui/simple_gui.i
+
+# target to preprocess a source file
+src/ui/simple_gui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-gui.dir/build.make CMakeFiles/ragger-simple-gui.dir/src/ui/simple_gui.cpp.i
+.PHONY : src/ui/simple_gui.cpp.i
+
+src/ui/simple_gui.s: src/ui/simple_gui.cpp.s
+.PHONY : src/ui/simple_gui.s
+
+# target to generate assembly for a file
+src/ui/simple_gui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-gui.dir/build.make CMakeFiles/ragger-simple-gui.dir/src/ui/simple_gui.cpp.s
+.PHONY : src/ui/simple_gui.cpp.s
 
 src/ui/working_gui.o: src/ui/working_gui.cpp.o
 .PHONY : src/ui/working_gui.o
@@ -909,6 +1094,8 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... bm25_ranker"
 	@echo "... cpp_parser"
+	@echo "... documentation"
+	@echo "... git_context"
 	@echo "... git_integration"
 	@echo "... graph_ranker"
 	@echo "... lsp_client"
@@ -919,13 +1106,25 @@ help:
 	@echo "... ragger-dev"
 	@echo "... ragger-gui"
 	@echo "... ragger-gui-lib"
+	@echo "... ragger-simple-console"
+	@echo "... ragger-simple-gui"
 	@echo "... ragger-tests"
 	@echo "... ragger-working-gui"
+	@echo "... static_analysis"
 	@echo "... test_discovery"
 	@echo "... treesitter_parser"
 	@echo "... plugins/clients/lsp_client/LSPClientPlugin.o"
 	@echo "... plugins/clients/lsp_client/LSPClientPlugin.i"
 	@echo "... plugins/clients/lsp_client/LSPClientPlugin.s"
+	@echo "... plugins/context/documentation/DocsPlugin.o"
+	@echo "... plugins/context/documentation/DocsPlugin.i"
+	@echo "... plugins/context/documentation/DocsPlugin.s"
+	@echo "... plugins/context/git_context/GitContextPlugin.o"
+	@echo "... plugins/context/git_context/GitContextPlugin.i"
+	@echo "... plugins/context/git_context/GitContextPlugin.s"
+	@echo "... plugins/context/static_analysis/StaticAnalysisPlugin.o"
+	@echo "... plugins/context/static_analysis/StaticAnalysisPlugin.i"
+	@echo "... plugins/context/static_analysis/StaticAnalysisPlugin.s"
 	@echo "... plugins/discovery/test_discovery/TestDiscoveryPlugin.o"
 	@echo "... plugins/discovery/test_discovery/TestDiscoveryPlugin.i"
 	@echo "... plugins/discovery/test_discovery/TestDiscoveryPlugin.s"
@@ -977,12 +1176,18 @@ help:
 	@echo "... src/ui/GUI.o"
 	@echo "... src/ui/GUI.i"
 	@echo "... src/ui/GUI.s"
+	@echo "... src/ui/console_interface.o"
+	@echo "... src/ui/console_interface.i"
+	@echo "... src/ui/console_interface.s"
 	@echo "... src/ui/ragger-gui.o"
 	@echo "... src/ui/ragger-gui.i"
 	@echo "... src/ui/ragger-gui.s"
 	@echo "... src/ui/simple_console.o"
 	@echo "... src/ui/simple_console.i"
 	@echo "... src/ui/simple_console.s"
+	@echo "... src/ui/simple_gui.o"
+	@echo "... src/ui/simple_gui.i"
+	@echo "... src/ui/simple_gui.s"
 	@echo "... src/ui/working_gui.o"
 	@echo "... src/ui/working_gui.i"
 	@echo "... src/ui/working_gui.s"

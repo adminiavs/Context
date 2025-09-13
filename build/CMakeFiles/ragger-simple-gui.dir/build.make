@@ -93,7 +93,10 @@ ragger__simple__gui_EXTERNAL_OBJECTS =
 bin/ragger-simple-gui: CMakeFiles/ragger-simple-gui.dir/src/ui/simple_gui.cpp.o
 bin/ragger-simple-gui: CMakeFiles/ragger-simple-gui.dir/build.make
 bin/ragger-simple-gui: lib/libragger-core.a
+bin/ragger-simple-gui: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
 bin/ragger-simple-gui: /usr/lib/x86_64-linux-gnu/libsqlite3.so
+bin/ragger-simple-gui: /usr/lib/x86_64-linux-gnu/libGLX.so
+bin/ragger-simple-gui: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 bin/ragger-simple-gui: CMakeFiles/ragger-simple-gui.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable bin/ragger-simple-gui"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ragger-simple-gui.dir/link.txt --verbose=$(VERBOSE)

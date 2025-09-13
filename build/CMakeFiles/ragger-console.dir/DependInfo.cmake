@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/b/coder/src/ui/simple_console.cpp" "CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o" "gcc" "CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o.d"
+  "/home/b/coder/src/ui/console_interface.cpp" "CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o" "gcc" "CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -18,7 +18,7 @@ class SimpleGUIApplication {
 private:
     bool m_running = false;
     std::string m_status = "RAGger GUI Ready";
-    std::string m_inputText = "";
+    char m_inputText[4096] = "";
     std::vector<std::string> m_logMessages;
 
 public:
@@ -80,17 +80,18 @@ public:
 
             // Input section
             ImGui::Text("Enter your code or prompt:");
-            ImGui::InputTextMultiline("##input", &m_inputText, ImVec2(-1, 200));
+            ImGui::InputTextMultiline("##input", m_inputText, sizeof(m_inputText), ImVec2(-1, 200));
             
             if (ImGui::Button("Process with RAG")) {
-                if (!m_inputText.empty()) {
-                    m_logMessages.push_back("Processing: " + m_inputText.substr(0, 50) + "...");
+                if (strlen(m_inputText) > 0) {
+                    std::string inputStr(m_inputText);
+                    m_logMessages.push_back("Processing: " + inputStr.substr(0, 50) + "...");
                     m_status = "Processing request...";
                 }
             }
             ImGui::SameLine();
             if (ImGui::Button("Clear")) {
-                m_inputText.clear();
+                m_inputText[0] = '\0';
                 m_logMessages.push_back("Input cleared");
             }
 

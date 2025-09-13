@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libstatic_analysis.so -o lib/libstatic_analysis.so CMakeFiles/static_analysis.dir/plugins/context/static_analysis/StaticAnalysisPlugin.cpp.o  lib/libragger-core.a /usr/lib/x86_64-linux-gnu/libsqlite3.so 

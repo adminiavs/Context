@@ -8,10 +8,12 @@
 #include "ragger_plugin_api.h"
 
 // Forward declarations for Dear ImGui types (stubs for now)
+#ifndef IMGUI_VERSION
 struct ImVec4 {
     float x, y, z, w;
     ImVec4(float x = 0.0f, float y = 0.0f, float z = 0.0f, float w = 1.0f) : x(x), y(y), z(z), w(w) {}
 };
+#endif
 
 namespace Ragger {
 namespace GUI {

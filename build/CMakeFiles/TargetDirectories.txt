@@ -3,7 +3,9 @@
 /home/b/coder/build/CMakeFiles/ragger-gui-lib.dir
 /home/b/coder/build/CMakeFiles/ragger-gui.dir
 /home/b/coder/build/CMakeFiles/ragger-console.dir
+/home/b/coder/build/CMakeFiles/ragger-simple-console.dir
 /home/b/coder/build/CMakeFiles/ragger-working-gui.dir
+/home/b/coder/build/CMakeFiles/ragger-simple-gui.dir
 /home/b/coder/build/CMakeFiles/cpp_parser.dir
 /home/b/coder/build/CMakeFiles/bm25_ranker.dir
 /home/b/coder/build/CMakeFiles/treesitter_parser.dir
@@ -11,6 +13,9 @@
 /home/b/coder/build/CMakeFiles/lsp_client.dir
 /home/b/coder/build/CMakeFiles/git_integration.dir
 /home/b/coder/build/CMakeFiles/test_discovery.dir
+/home/b/coder/build/CMakeFiles/git_context.dir
+/home/b/coder/build/CMakeFiles/static_analysis.dir
+/home/b/coder/build/CMakeFiles/documentation.dir
 /home/b/coder/build/CMakeFiles/ragger-dev.dir
 /home/b/coder/build/CMakeFiles/package.dir
 /home/b/coder/build/CMakeFiles/package_source.dir

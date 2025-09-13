@@ -212,4 +212,5 @@ CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o: \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
  /home/b/coder/src/core/IndexManager.h /usr/include/sqlite3.h \
  /home/b/coder/src/core/ContextEngine.h \
- /home/b/coder/src/core/PluginManager.h
+ /home/b/coder/src/core/PluginManager.h \
+ /home/b/coder/src/core/ComprehensiveContextGenerator.h

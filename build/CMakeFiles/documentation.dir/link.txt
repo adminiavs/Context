@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libdocumentation.so -o lib/libdocumentation.so CMakeFiles/documentation.dir/plugins/context/documentation/DocsPlugin.cpp.o  lib/libragger-core.a /usr/lib/x86_64-linux-gnu/libsqlite3.so 

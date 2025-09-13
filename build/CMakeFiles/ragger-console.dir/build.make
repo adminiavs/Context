@@ -69,28 +69,28 @@ include CMakeFiles/ragger-console.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ragger-console.dir/flags.make
 
-CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o: CMakeFiles/ragger-console.dir/flags.make
-CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o: /home/b/coder/src/ui/simple_console.cpp
-CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o: CMakeFiles/ragger-console.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o -MF CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o.d -o CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o -c /home/b/coder/src/ui/simple_console.cpp
+CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o: CMakeFiles/ragger-console.dir/flags.make
+CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o: /home/b/coder/src/ui/console_interface.cpp
+CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o: CMakeFiles/ragger-console.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o -MF CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o.d -o CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o -c /home/b/coder/src/ui/console_interface.cpp
 
-CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/b/coder/src/ui/simple_console.cpp > CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.i
+CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/b/coder/src/ui/console_interface.cpp > CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.i
 
-CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/b/coder/src/ui/simple_console.cpp -o CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.s
+CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/b/coder/src/ui/console_interface.cpp -o CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.s
 
 # Object files for target ragger-console
 ragger__console_OBJECTS = \
-"CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o"
+"CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o"
 
 # External object files for target ragger-console
 ragger__console_EXTERNAL_OBJECTS =
 
-bin/ragger-console: CMakeFiles/ragger-console.dir/src/ui/simple_console.cpp.o
+bin/ragger-console: CMakeFiles/ragger-console.dir/src/ui/console_interface.cpp.o
 bin/ragger-console: CMakeFiles/ragger-console.dir/build.make
 bin/ragger-console: lib/libragger-core.a
 bin/ragger-console: /usr/lib/x86_64-linux-gnu/libsqlite3.so

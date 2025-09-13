@@ -1,1 +1,1 @@
-/usr/bin/c++ -O3 -DNDEBUG "CMakeFiles/ragger-working-gui.dir/src/ui/working_gui.cpp.o" -o bin/ragger-working-gui  lib/libragger-core.a -lglfw -lGL -limgui -lstb /usr/lib/x86_64-linux-gnu/libsqlite3.so 
+/usr/bin/c++ -O3 -DNDEBUG "CMakeFiles/ragger-working-gui.dir/src/ui/working_gui.cpp.o" -o bin/ragger-working-gui  lib/libragger-core.a /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 -lGL -limgui -lstb /usr/lib/x86_64-linux-gnu/libsqlite3.so 

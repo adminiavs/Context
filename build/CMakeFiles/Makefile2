@@ -68,7 +68,9 @@ all: CMakeFiles/ragger.dir/all
 all: CMakeFiles/ragger-gui-lib.dir/all
 all: CMakeFiles/ragger-gui.dir/all
 all: CMakeFiles/ragger-console.dir/all
+all: CMakeFiles/ragger-simple-console.dir/all
 all: CMakeFiles/ragger-working-gui.dir/all
+all: CMakeFiles/ragger-simple-gui.dir/all
 all: CMakeFiles/cpp_parser.dir/all
 all: CMakeFiles/bm25_ranker.dir/all
 all: CMakeFiles/treesitter_parser.dir/all
@@ -76,6 +78,9 @@ all: CMakeFiles/graph_ranker.dir/all
 all: CMakeFiles/lsp_client.dir/all
 all: CMakeFiles/git_integration.dir/all
 all: CMakeFiles/test_discovery.dir/all
+all: CMakeFiles/git_context.dir/all
+all: CMakeFiles/static_analysis.dir/all
+all: CMakeFiles/documentation.dir/all
 all: CMakeFiles/ragger-dev.dir/all
 all: tests/all
 all: benchmarks/all
@@ -92,7 +97,9 @@ clean: CMakeFiles/ragger.dir/clean
 clean: CMakeFiles/ragger-gui-lib.dir/clean
 clean: CMakeFiles/ragger-gui.dir/clean
 clean: CMakeFiles/ragger-console.dir/clean
+clean: CMakeFiles/ragger-simple-console.dir/clean
 clean: CMakeFiles/ragger-working-gui.dir/clean
+clean: CMakeFiles/ragger-simple-gui.dir/clean
 clean: CMakeFiles/cpp_parser.dir/clean
 clean: CMakeFiles/bm25_ranker.dir/clean
 clean: CMakeFiles/treesitter_parser.dir/clean
@@ -100,6 +107,9 @@ clean: CMakeFiles/graph_ranker.dir/clean
 clean: CMakeFiles/lsp_client.dir/clean
 clean: CMakeFiles/git_integration.dir/clean
 clean: CMakeFiles/test_discovery.dir/clean
+clean: CMakeFiles/git_context.dir/clean
+clean: CMakeFiles/static_analysis.dir/clean
+clean: CMakeFiles/documentation.dir/clean
 clean: CMakeFiles/ragger-dev.dir/clean
 clean: tests/clean
 clean: benchmarks/clean
@@ -142,7 +152,7 @@ tests/clean: tests/CMakeFiles/ragger-tests.dir/clean
 CMakeFiles/ragger-core.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-core.dir/build.make CMakeFiles/ragger-core.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-core.dir/build.make CMakeFiles/ragger-core.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=17,18,19,20,21,22,23,24,25 "Built target ragger-core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=21,22,23,24,25,26,27,28,29 "Built target ragger-core"
 .PHONY : CMakeFiles/ragger-core.dir/all
 
 # Build rule for subdir invocation for target.
@@ -168,7 +178,7 @@ CMakeFiles/ragger-core.dir/clean:
 CMakeFiles/ragger.dir/all: CMakeFiles/ragger-core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger.dir/build.make CMakeFiles/ragger.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger.dir/build.make CMakeFiles/ragger.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=11,12 "Built target ragger"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=15,16 "Built target ragger"
 .PHONY : CMakeFiles/ragger.dir/all
 
 # Build rule for subdir invocation for target.
@@ -194,7 +204,7 @@ CMakeFiles/ragger.dir/clean:
 CMakeFiles/ragger-gui-lib.dir/all: CMakeFiles/ragger-core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-gui-lib.dir/build.make CMakeFiles/ragger-gui-lib.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-gui-lib.dir/build.make CMakeFiles/ragger-gui-lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=30,31 "Built target ragger-gui-lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=34,35 "Built target ragger-gui-lib"
 .PHONY : CMakeFiles/ragger-gui-lib.dir/all
 
 # Build rule for subdir invocation for target.
@@ -217,11 +227,11 @@ CMakeFiles/ragger-gui-lib.dir/clean:
 # Target rules for target CMakeFiles/ragger-gui.dir
 
 # All Build rule for target.
-CMakeFiles/ragger-gui.dir/all: CMakeFiles/ragger-gui-lib.dir/all
 CMakeFiles/ragger-gui.dir/all: CMakeFiles/ragger-core.dir/all
+CMakeFiles/ragger-gui.dir/all: CMakeFiles/ragger-gui-lib.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-gui.dir/build.make CMakeFiles/ragger-gui.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-gui.dir/build.make CMakeFiles/ragger-gui.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=28,29 "Built target ragger-gui"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=32,33 "Built target ragger-gui"
 .PHONY : CMakeFiles/ragger-gui.dir/all
 
 # Build rule for subdir invocation for target.
@@ -247,7 +257,7 @@ CMakeFiles/ragger-gui.dir/clean:
 CMakeFiles/ragger-console.dir/all: CMakeFiles/ragger-core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-console.dir/build.make CMakeFiles/ragger-console.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-console.dir/build.make CMakeFiles/ragger-console.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=15,16 "Built target ragger-console"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=19,20 "Built target ragger-console"
 .PHONY : CMakeFiles/ragger-console.dir/all
 
 # Build rule for subdir invocation for target.
@@ -267,13 +277,39 @@ CMakeFiles/ragger-console.dir/clean:
 .PHONY : CMakeFiles/ragger-console.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/ragger-simple-console.dir
+
+# All Build rule for target.
+CMakeFiles/ragger-simple-console.dir/all: CMakeFiles/ragger-core.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-console.dir/build.make CMakeFiles/ragger-simple-console.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-console.dir/build.make CMakeFiles/ragger-simple-console.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=36,37 "Built target ragger-simple-console"
+.PHONY : CMakeFiles/ragger-simple-console.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ragger-simple-console.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/b/coder/build/CMakeFiles 11
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ragger-simple-console.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/b/coder/build/CMakeFiles 0
+.PHONY : CMakeFiles/ragger-simple-console.dir/rule
+
+# Convenience name for target.
+ragger-simple-console: CMakeFiles/ragger-simple-console.dir/rule
+.PHONY : ragger-simple-console
+
+# clean rule for target.
+CMakeFiles/ragger-simple-console.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-console.dir/build.make CMakeFiles/ragger-simple-console.dir/clean
+.PHONY : CMakeFiles/ragger-simple-console.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/ragger-working-gui.dir
 
 # All Build rule for target.
 CMakeFiles/ragger-working-gui.dir/all: CMakeFiles/ragger-core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-working-gui.dir/build.make CMakeFiles/ragger-working-gui.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-working-gui.dir/build.make CMakeFiles/ragger-working-gui.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=34,35 "Built target ragger-working-gui"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=42,43 "Built target ragger-working-gui"
 .PHONY : CMakeFiles/ragger-working-gui.dir/all
 
 # Build rule for subdir invocation for target.
@@ -291,6 +327,32 @@ ragger-working-gui: CMakeFiles/ragger-working-gui.dir/rule
 CMakeFiles/ragger-working-gui.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-working-gui.dir/build.make CMakeFiles/ragger-working-gui.dir/clean
 .PHONY : CMakeFiles/ragger-working-gui.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ragger-simple-gui.dir
+
+# All Build rule for target.
+CMakeFiles/ragger-simple-gui.dir/all: CMakeFiles/ragger-core.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-gui.dir/build.make CMakeFiles/ragger-simple-gui.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-gui.dir/build.make CMakeFiles/ragger-simple-gui.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=38,39 "Built target ragger-simple-gui"
+.PHONY : CMakeFiles/ragger-simple-gui.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ragger-simple-gui.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/b/coder/build/CMakeFiles 11
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ragger-simple-gui.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/b/coder/build/CMakeFiles 0
+.PHONY : CMakeFiles/ragger-simple-gui.dir/rule
+
+# Convenience name for target.
+ragger-simple-gui: CMakeFiles/ragger-simple-gui.dir/rule
+.PHONY : ragger-simple-gui
+
+# clean rule for target.
+CMakeFiles/ragger-simple-gui.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-simple-gui.dir/build.make CMakeFiles/ragger-simple-gui.dir/clean
+.PHONY : CMakeFiles/ragger-simple-gui.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/cpp_parser.dir
@@ -351,7 +413,7 @@ CMakeFiles/bm25_ranker.dir/clean:
 CMakeFiles/treesitter_parser.dir/all: CMakeFiles/ragger-core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/treesitter_parser.dir/build.make CMakeFiles/treesitter_parser.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/treesitter_parser.dir/build.make CMakeFiles/treesitter_parser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=38,39 "Built target treesitter_parser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=48,49 "Built target treesitter_parser"
 .PHONY : CMakeFiles/treesitter_parser.dir/all
 
 # Build rule for subdir invocation for target.
@@ -377,7 +439,7 @@ CMakeFiles/treesitter_parser.dir/clean:
 CMakeFiles/graph_ranker.dir/all: CMakeFiles/ragger-core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/graph_ranker.dir/build.make CMakeFiles/graph_ranker.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/graph_ranker.dir/build.make CMakeFiles/graph_ranker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=7,8 "Built target graph_ranker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=11,12 "Built target graph_ranker"
 .PHONY : CMakeFiles/graph_ranker.dir/all
 
 # Build rule for subdir invocation for target.
@@ -403,7 +465,7 @@ CMakeFiles/graph_ranker.dir/clean:
 CMakeFiles/lsp_client.dir/all: CMakeFiles/ragger-core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lsp_client.dir/build.make CMakeFiles/lsp_client.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lsp_client.dir/build.make CMakeFiles/lsp_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=9,10 "Built target lsp_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=13,14 "Built target lsp_client"
 .PHONY : CMakeFiles/lsp_client.dir/all
 
 # Build rule for subdir invocation for target.
@@ -429,7 +491,7 @@ CMakeFiles/lsp_client.dir/clean:
 CMakeFiles/git_integration.dir/all: CMakeFiles/ragger-core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/git_integration.dir/build.make CMakeFiles/git_integration.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/git_integration.dir/build.make CMakeFiles/git_integration.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=5,6 "Built target git_integration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=9,10 "Built target git_integration"
 .PHONY : CMakeFiles/git_integration.dir/all
 
 # Build rule for subdir invocation for target.
@@ -455,7 +517,7 @@ CMakeFiles/git_integration.dir/clean:
 CMakeFiles/test_discovery.dir/all: CMakeFiles/ragger-core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_discovery.dir/build.make CMakeFiles/test_discovery.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_discovery.dir/build.make CMakeFiles/test_discovery.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=36,37 "Built target test_discovery"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=46,47 "Built target test_discovery"
 .PHONY : CMakeFiles/test_discovery.dir/all
 
 # Build rule for subdir invocation for target.
@@ -475,13 +537,91 @@ CMakeFiles/test_discovery.dir/clean:
 .PHONY : CMakeFiles/test_discovery.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/git_context.dir
+
+# All Build rule for target.
+CMakeFiles/git_context.dir/all: CMakeFiles/ragger-core.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/git_context.dir/build.make CMakeFiles/git_context.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/git_context.dir/build.make CMakeFiles/git_context.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=7,8 "Built target git_context"
+.PHONY : CMakeFiles/git_context.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/git_context.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/b/coder/build/CMakeFiles 11
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/git_context.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/b/coder/build/CMakeFiles 0
+.PHONY : CMakeFiles/git_context.dir/rule
+
+# Convenience name for target.
+git_context: CMakeFiles/git_context.dir/rule
+.PHONY : git_context
+
+# clean rule for target.
+CMakeFiles/git_context.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/git_context.dir/build.make CMakeFiles/git_context.dir/clean
+.PHONY : CMakeFiles/git_context.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/static_analysis.dir
+
+# All Build rule for target.
+CMakeFiles/static_analysis.dir/all: CMakeFiles/ragger-core.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/static_analysis.dir/build.make CMakeFiles/static_analysis.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/static_analysis.dir/build.make CMakeFiles/static_analysis.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=44,45 "Built target static_analysis"
+.PHONY : CMakeFiles/static_analysis.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/static_analysis.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/b/coder/build/CMakeFiles 11
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/static_analysis.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/b/coder/build/CMakeFiles 0
+.PHONY : CMakeFiles/static_analysis.dir/rule
+
+# Convenience name for target.
+static_analysis: CMakeFiles/static_analysis.dir/rule
+.PHONY : static_analysis
+
+# clean rule for target.
+CMakeFiles/static_analysis.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/static_analysis.dir/build.make CMakeFiles/static_analysis.dir/clean
+.PHONY : CMakeFiles/static_analysis.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/documentation.dir
+
+# All Build rule for target.
+CMakeFiles/documentation.dir/all: CMakeFiles/ragger-core.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/documentation.dir/build.make CMakeFiles/documentation.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/documentation.dir/build.make CMakeFiles/documentation.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=5,6 "Built target documentation"
+.PHONY : CMakeFiles/documentation.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/documentation.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/b/coder/build/CMakeFiles 11
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/documentation.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/b/coder/build/CMakeFiles 0
+.PHONY : CMakeFiles/documentation.dir/rule
+
+# Convenience name for target.
+documentation: CMakeFiles/documentation.dir/rule
+.PHONY : documentation
+
+# clean rule for target.
+CMakeFiles/documentation.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/documentation.dir/build.make CMakeFiles/documentation.dir/clean
+.PHONY : CMakeFiles/documentation.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/ragger-dev.dir
 
 # All Build rule for target.
 CMakeFiles/ragger-dev.dir/all: CMakeFiles/ragger-core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-dev.dir/build.make CMakeFiles/ragger-dev.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ragger-dev.dir/build.make CMakeFiles/ragger-dev.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=26,27 "Built target ragger-dev"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=30,31 "Built target ragger-dev"
 .PHONY : CMakeFiles/ragger-dev.dir/all
 
 # Build rule for subdir invocation for target.
@@ -507,7 +647,7 @@ CMakeFiles/ragger-dev.dir/clean:
 tests/CMakeFiles/ragger-tests.dir/all: CMakeFiles/ragger-core.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/ragger-tests.dir/build.make tests/CMakeFiles/ragger-tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/ragger-tests.dir/build.make tests/CMakeFiles/ragger-tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=32,33 "Built target ragger-tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=40,41 "Built target ragger-tests"
 .PHONY : tests/CMakeFiles/ragger-tests.dir/all
 
 # Build rule for subdir invocation for target.
@@ -533,7 +673,7 @@ tests/CMakeFiles/ragger-tests.dir/clean:
 benchmarks/CMakeFiles/ragger-benchmarks.dir/all: CMakeFiles/ragger-core.dir/all
 	$(MAKE) $(MAKESILENT) -f benchmarks/CMakeFiles/ragger-benchmarks.dir/build.make benchmarks/CMakeFiles/ragger-benchmarks.dir/depend
 	$(MAKE) $(MAKESILENT) -f benchmarks/CMakeFiles/ragger-benchmarks.dir/build.make benchmarks/CMakeFiles/ragger-benchmarks.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=13,14 "Built target ragger-benchmarks"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=17,18 "Built target ragger-benchmarks"
 .PHONY : benchmarks/CMakeFiles/ragger-benchmarks.dir/all
 
 # Build rule for subdir invocation for target.

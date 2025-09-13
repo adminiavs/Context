@@ -93,6 +93,7 @@ ragger__working__gui_EXTERNAL_OBJECTS =
 bin/ragger-working-gui: CMakeFiles/ragger-working-gui.dir/src/ui/working_gui.cpp.o
 bin/ragger-working-gui: CMakeFiles/ragger-working-gui.dir/build.make
 bin/ragger-working-gui: lib/libragger-core.a
+bin/ragger-working-gui: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
 bin/ragger-working-gui: /usr/lib/x86_64-linux-gnu/libsqlite3.so
 bin/ragger-working-gui: CMakeFiles/ragger-working-gui.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/b/coder/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable bin/ragger-working-gui"
