@@ -5,6 +5,22 @@ All notable changes to RAGger will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-01-13
+
+### 📊 Documentation Update
+
+#### Added
+- **Comprehensive Benchmark Report**: Added detailed benchmark analysis demonstrating RAGger's effectiveness
+  - Comparative analysis of GPT-5, Gemini Pro, and Gemini Flash performance
+  - Quantitative scorecard showing dramatic improvements with RAGger
+  - Evidence that RAGger transforms LLMs from "guessers" to "integrators"
+  - All models achieve perfect scores (20/20) when using RAGger context
+
+#### Key Benchmark Results
+- **GPT-5**: 16/20 (naive) → 20/20 (with RAGger)
+- **Gemini Pro**: 5/20 (naive) → 20/20 (with RAGger)
+- **Gemini Flash**: 1/20 (naive) → 20/20 (with RAGger)
+
 ## [1.0.0] - 2025-01-13
 
 ### 🎉 Initial Stable Release
