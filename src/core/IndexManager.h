@@ -5,6 +5,8 @@
 #include <vector>
 #include <unordered_map>
 #include <filesystem>
+#include <mutex>
+#include <chrono>
 // SQLite support enabled
 #include <sqlite3.h>
 
@@ -46,11 +48,31 @@ public:
     void setDatabasePath(const fs::path& dbPath);
 
 private:
-    sqlite3* db_;
+    // Database connection pool
+    struct DatabaseConnection {
+        sqlite3* db;
+        bool inUse;
+        std::chrono::steady_clock::time_point lastUsed;
+        
+        DatabaseConnection() : db(nullptr), inUse(false) {}
+    };
+    
+    std::vector<DatabaseConnection> connectionPool_;
+    std::mutex poolMutex_;
+    static const size_t MAX_CONNECTIONS = 5;
+    
+    // Connection pool methods
+    sqlite3* getConnection();
+    void returnConnection(sqlite3* db);
+    void initializeConnectionPool();
+    void cleanupConnectionPool();
+    
+    sqlite3* db_; // Main database connection
     fs::path dbPath_;
     size_t maxFileSize_;
     int debounceDelay_;
     std::unordered_map<std::string, std::string> fileHashes_; // file path -> hash
+    std::unordered_map<std::string, std::chrono::steady_clock::time_point> hashCache_; // file path -> last modified time
 
     // Database operations
     int createTables();

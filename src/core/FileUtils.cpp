@@ -5,11 +5,21 @@
 #include <iostream>
 #include <unordered_map>
 // spdlog disabled
+#include <openssl/evp.h>
 #include <openssl/sha.h>
 
 namespace Ragger {
 
 int FileUtils::readFile(const fs::path& path, char** content, size_t* size) {
+    // Input validation
+    if (!content || !size) {
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
+    if (path.empty()) {
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
     try {
         std::ifstream file(path, std::ios::binary | std::ios::ate);
         if (!file) {
@@ -56,31 +66,64 @@ int FileUtils::writeFile(const fs::path& path, const char* content, size_t size)
 }
 
 int FileUtils::getFileHash(const fs::path& path, char* hash, size_t hashSize) {
+    // Input validation
+    if (!hash) {
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
+    if (path.empty()) {
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
+    if (hashSize < (SHA256_DIGEST_LENGTH * 2 + 1)) {
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
     try {
         std::ifstream file(path, std::ios::binary);
         if (!file) {
             return RAGGER_ERROR_FILE_NOT_FOUND;
         }
 
-        SHA256_CTX sha256;
-        SHA256_Init(&sha256);
+        // Use modern EVP interface for SHA256
+        EVP_MD_CTX* mdctx = EVP_MD_CTX_new();
+        if (!mdctx) {
+            return RAGGER_ERROR_MEMORY_ALLOCATION;
+        }
+
+        const EVP_MD* md = EVP_sha256();
+        if (!EVP_DigestInit_ex(mdctx, md, nullptr)) {
+            EVP_MD_CTX_free(mdctx);
+            return RAGGER_ERROR_INTERNAL;
+        }
 
         char buffer[8192];
         while (file.read(buffer, sizeof(buffer))) {
-            SHA256_Update(&sha256, buffer, file.gcount());
+            if (!EVP_DigestUpdate(mdctx, buffer, file.gcount())) {
+                EVP_MD_CTX_free(mdctx);
+                return RAGGER_ERROR_INTERNAL;
+            }
         }
-        SHA256_Update(&sha256, buffer, file.gcount());
+        if (!EVP_DigestUpdate(mdctx, buffer, file.gcount())) {
+            EVP_MD_CTX_free(mdctx);
+            return RAGGER_ERROR_INTERNAL;
+        }
 
         unsigned char hashBytes[SHA256_DIGEST_LENGTH];
-        SHA256_Final(hashBytes, &sha256);
+        unsigned int hashLen;
+        if (!EVP_DigestFinal_ex(mdctx, hashBytes, &hashLen)) {
+            EVP_MD_CTX_free(mdctx);
+            return RAGGER_ERROR_INTERNAL;
+        }
+        EVP_MD_CTX_free(mdctx);
 
         if (hashSize < (SHA256_DIGEST_LENGTH * 2 + 1)) {
             return RAGGER_ERROR_INVALID_ARGUMENT;
         }
 
-        // Convert to hex string
+        // Convert to hex string with bounds checking
         for (int i = 0; i < SHA256_DIGEST_LENGTH; ++i) {
-            sprintf(hash + (i * 2), "%02x", hashBytes[i]);
+            snprintf(hash + (i * 2), hashSize - (i * 2), "%02x", hashBytes[i]);
         }
         hash[SHA256_DIGEST_LENGTH * 2] = '\0';
 

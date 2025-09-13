@@ -8,8 +8,8 @@
 #include <queue>
 #include <string>
 #include <thread>
-#include <condition_variable>
 #include <atomic>
+#include <condition_variable>
 
 namespace Ragger {
 
@@ -40,11 +40,11 @@ public:
 
     // Statistics and monitoring
     struct Stats {
-        uint64_t totalEventsEmitted;
-        uint64_t totalEventsProcessed;
-        uint64_t eventsDropped;
-        uint64_t averageProcessingTime; // microseconds
-        std::unordered_map<EventType, uint64_t> eventsByType;
+        std::atomic<uint64_t> totalEventsEmitted{0};
+        std::atomic<uint64_t> totalEventsProcessed{0};
+        std::atomic<uint64_t> eventsDropped{0};
+        std::atomic<uint64_t> averageProcessingTime{0}; // microseconds
+        std::unordered_map<EventType, std::atomic<uint64_t>> eventsByType;
     };
 
     const Stats& getStats() const;

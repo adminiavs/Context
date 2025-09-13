@@ -32,10 +32,12 @@ int ContextEngine::generateContext(const ContextRequest* request, ContextRespons
 
     // Debug: Generated context for request
 
-    // Placeholder: set basic template
+    // Placeholder: set basic template with bounds checking
     static const char* defaultTemplate = "default";
-    (*response)->promptTemplate = new char[strlen(defaultTemplate) + 1];
-    strcpy(const_cast<char*>((*response)->promptTemplate), defaultTemplate);
+    size_t templateLen = strlen(defaultTemplate);
+    (*response)->promptTemplate = new char[templateLen + 1];
+    strncpy(const_cast<char*>((*response)->promptTemplate), defaultTemplate, templateLen);
+    const_cast<char*>((*response)->promptTemplate)[templateLen] = '\0';
 
     return RAGGER_SUCCESS;
 }

@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <openssl/evp.h>
 #include <openssl/sha.h> // For SHA256 hashing
 
 namespace Ragger {
@@ -26,6 +27,9 @@ int IndexManager::initialize() {
         std::cerr << "IndexManager: Failed to open database: " << sqlite3_errmsg(db_) << std::endl;
         return RAGGER_ERROR_OPERATION_NOT_SUPPORTED;
     }
+    
+    // Initialize connection pool
+    initializeConnectionPool();
 
     // Create tables
     result = createTables();
@@ -39,6 +43,9 @@ int IndexManager::initialize() {
 }
 
 void IndexManager::shutdown() {
+    // Cleanup connection pool first
+    cleanupConnectionPool();
+    
     if (db_) {
         sqlite3_close(db_);
         db_ = nullptr;
@@ -349,29 +356,72 @@ int IndexManager::deleteFileRecords(const fs::path& filePath) {
 
 std::string IndexManager::calculateFileHash(const fs::path& filePath) {
     try {
+        std::string pathStr = filePath.string();
+        
+        // Check if we have a cached hash and the file hasn't been modified
+        auto hashIt = fileHashes_.find(pathStr);
+        auto timeIt = hashCache_.find(pathStr);
+        
+        if (hashIt != fileHashes_.end() && timeIt != hashCache_.end()) {
+            // Check if file modification time has changed (simplified check)
+            auto fileTime = fs::last_write_time(filePath);
+            auto currentTime = std::chrono::steady_clock::now();
+            
+            // If cache is less than 5 minutes old, use cached hash
+            if ((currentTime - timeIt->second) < std::chrono::minutes(5)) {
+                return hashIt->second; // Return cached hash
+            }
+        }
+        
         std::ifstream file(filePath, std::ios::binary);
         if (!file) {
             return "";
         }
 
-        SHA256_CTX sha256;
-        SHA256_Init(&sha256);
+        // Use modern EVP interface for SHA256
+        EVP_MD_CTX* mdctx = EVP_MD_CTX_new();
+        if (!mdctx) {
+            return "";
+        }
+
+        const EVP_MD* md = EVP_sha256();
+        if (!EVP_DigestInit_ex(mdctx, md, nullptr)) {
+            EVP_MD_CTX_free(mdctx);
+            return "";
+        }
 
         char buffer[8192];
         while (file.read(buffer, sizeof(buffer))) {
-            SHA256_Update(&sha256, buffer, file.gcount());
+            if (!EVP_DigestUpdate(mdctx, buffer, file.gcount())) {
+                EVP_MD_CTX_free(mdctx);
+                return "";
+            }
         }
-        SHA256_Update(&sha256, buffer, file.gcount());
+        if (!EVP_DigestUpdate(mdctx, buffer, file.gcount())) {
+            EVP_MD_CTX_free(mdctx);
+            return "";
+        }
 
         unsigned char hash[SHA256_DIGEST_LENGTH];
-        SHA256_Final(hash, &sha256);
+        unsigned int hashLen;
+        if (!EVP_DigestFinal_ex(mdctx, hash, &hashLen)) {
+            EVP_MD_CTX_free(mdctx);
+            return "";
+        }
+        EVP_MD_CTX_free(mdctx);
 
         std::stringstream ss;
         for (int i = 0; i < SHA256_DIGEST_LENGTH; ++i) {
             ss << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(hash[i]);
         }
 
-        return ss.str();
+        std::string hashStr = ss.str();
+        
+        // Cache the hash and timestamp
+        fileHashes_[pathStr] = hashStr;
+        hashCache_[pathStr] = std::chrono::steady_clock::now();
+
+        return hashStr;
 
     } catch (const std::exception& e) {
         std::cerr << "IndexManager: Error calculating hash for " << filePath.string() << ": " << e.what() << std::endl;
@@ -447,6 +497,57 @@ int IndexManager::executeQueryWithCallback(const std::string& query,
     }
 
     return RAGGER_SUCCESS;
+}
+
+// Connection pool implementation
+void IndexManager::initializeConnectionPool() {
+    std::lock_guard<std::mutex> lock(poolMutex_);
+    
+    for (size_t i = 0; i < MAX_CONNECTIONS; ++i) {
+        DatabaseConnection conn;
+        if (sqlite3_open(dbPath_.string().c_str(), &conn.db) == SQLITE_OK) {
+            connectionPool_.push_back(conn);
+        }
+    }
+}
+
+void IndexManager::cleanupConnectionPool() {
+    std::lock_guard<std::mutex> lock(poolMutex_);
+    
+    for (auto& conn : connectionPool_) {
+        if (conn.db) {
+            sqlite3_close(conn.db);
+        }
+    }
+    connectionPool_.clear();
+}
+
+sqlite3* IndexManager::getConnection() {
+    std::lock_guard<std::mutex> lock(poolMutex_);
+    
+    // Find available connection
+    for (auto& conn : connectionPool_) {
+        if (!conn.inUse) {
+            conn.inUse = true;
+            conn.lastUsed = std::chrono::steady_clock::now();
+            return conn.db;
+        }
+    }
+    
+    // If no connection available, return the main db (fallback)
+    return db_;
+}
+
+void IndexManager::returnConnection(sqlite3* db) {
+    std::lock_guard<std::mutex> lock(poolMutex_);
+    
+    for (auto& conn : connectionPool_) {
+        if (conn.db == db) {
+            conn.inUse = false;
+            conn.lastUsed = std::chrono::steady_clock::now();
+            break;
+        }
+    }
 }
 
 } // namespace Ragger

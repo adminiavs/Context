@@ -24,14 +24,31 @@ EventBus::~EventBus() {
 }
 
 int EventBus::emitEvent(const EventData* event) {
+    // Comprehensive input validation
     if (!event) {
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
+    if (event->type <= 0 || event->type > 8) { // Based on EventType enum
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
+    if (event->dataSize > 1024 * 1024) { // Limit to 1MB
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
+    if (event->data && event->dataSize == 0) {
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
+    if (event->sourcePlugin && strlen(event->sourcePlugin) > 256) {
         return RAGGER_ERROR_INVALID_ARGUMENT;
     }
 
     std::lock_guard<std::mutex> lock(mutex_);
 
     if (!shouldProcessEvent(event)) {
-        stats_.eventsDropped++;
+        stats_.eventsDropped.fetch_add(1);
         return RAGGER_SUCCESS; // Not an error, just filtered out
     }
 
@@ -57,29 +74,54 @@ int EventBus::emitEvent(const EventData* event) {
 }
 
 int EventBus::emitEventAsync(const EventData* event) {
+    // Comprehensive input validation
     if (!event) {
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
+    if (event->type <= 0 || event->type > 8) { // Based on EventType enum
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
+    if (event->dataSize > 1024 * 1024) { // Limit to 1MB
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
+    if (event->data && event->dataSize == 0) {
+        return RAGGER_ERROR_INVALID_ARGUMENT;
+    }
+    
+    if (event->sourcePlugin && strlen(event->sourcePlugin) > 256) {
         return RAGGER_ERROR_INVALID_ARGUMENT;
     }
 
     std::lock_guard<std::mutex> lock(mutex_);
 
     if (!shouldProcessEvent(event)) {
-        stats_.eventsDropped++;
+        stats_.eventsDropped.fetch_add(1);
         return RAGGER_SUCCESS;
     }
 
-    // Copy event data
-    EventData* eventCopy = new EventData(*event);
+    // Create event copy with proper memory management
+    auto eventCopy = std::make_unique<EventData>();
+    eventCopy->type = event->type;
+    eventCopy->timestamp = event->timestamp;
+    eventCopy->sourcePlugin = event->sourcePlugin;
+    eventCopy->dataSize = event->dataSize;
+    
+    // Copy data with proper memory management
     if (event->data && event->dataSize > 0) {
         eventCopy->data = new char[event->dataSize];
         std::memcpy(eventCopy->data, event->data, event->dataSize);
+    } else {
+        eventCopy->data = nullptr;
     }
 
     // Add to queue with default priority
-    eventQueue_.push({std::unique_ptr<EventData>(eventCopy), 0});
+    eventQueue_.push({std::move(eventCopy), 0});
     eventCondition_.notify_one();
 
-    stats_.totalEventsEmitted++;
+    stats_.totalEventsEmitted.fetch_add(1);
     return RAGGER_SUCCESS;
 }
 
@@ -199,7 +241,11 @@ const EventBus::Stats& EventBus::getStats() const {
 
 void EventBus::resetStats() {
     std::lock_guard<std::mutex> lock(mutex_);
-    stats_ = Stats{};
+    stats_.totalEventsEmitted.store(0);
+    stats_.totalEventsProcessed.store(0);
+    stats_.eventsDropped.store(0);
+    stats_.averageProcessingTime.store(0);
+    stats_.eventsByType.clear();
 }
 
 void EventBus::lock() {
@@ -240,16 +286,17 @@ void EventBus::processingLoop() {
 
             lock.lock(); // Re-lock for stats update
 
-            stats_.totalEventsProcessed++;
-            stats_.eventsByType[item.event->type]++;
+            stats_.totalEventsProcessed.fetch_add(1);
+            stats_.eventsByType[item.event->type].fetch_add(1);
 
             // Update average processing time
-            if (stats_.totalEventsProcessed == 1) {
-                stats_.averageProcessingTime = duration.count();
+            uint64_t currentCount = stats_.totalEventsProcessed.load();
+            if (currentCount == 1) {
+                stats_.averageProcessingTime.store(duration.count());
             } else {
-                stats_.averageProcessingTime =
-                    (stats_.averageProcessingTime * (stats_.totalEventsProcessed - 1) + duration.count()) /
-                    stats_.totalEventsProcessed;
+                uint64_t currentAvg = stats_.averageProcessingTime.load();
+                stats_.averageProcessingTime.store(
+                    (currentAvg * (currentCount - 1) + duration.count()) / currentCount);
             }
         }
     }

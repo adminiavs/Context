@@ -893,6 +893,7 @@ CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o: /home/b/coder/src/core/File
   /usr/include/c++/13/ratio \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/stdlib.h \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
@@ -907,12 +908,35 @@ CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o: /home/b/coder/src/core/File
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/libintl.h \
+  /usr/include/limits.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/limits.h \
   /usr/include/locale.h \
+  /usr/include/openssl/asn1.h \
+  /usr/include/openssl/asn1err.h \
+  /usr/include/openssl/bio.h \
+  /usr/include/openssl/bioerr.h \
+  /usr/include/openssl/bn.h \
+  /usr/include/openssl/bnerr.h \
+  /usr/include/openssl/core.h \
+  /usr/include/openssl/core_dispatch.h \
+  /usr/include/openssl/crypto.h \
+  /usr/include/openssl/cryptoerr.h \
+  /usr/include/openssl/cryptoerr_legacy.h \
   /usr/include/openssl/e_os2.h \
+  /usr/include/openssl/evp.h \
+  /usr/include/openssl/evperr.h \
   /usr/include/openssl/macros.h \
+  /usr/include/openssl/obj_mac.h \
+  /usr/include/openssl/objects.h \
+  /usr/include/openssl/objectserr.h \
   /usr/include/openssl/opensslv.h \
+  /usr/include/openssl/params.h \
+  /usr/include/openssl/safestack.h \
   /usr/include/openssl/sha.h \
+  /usr/include/openssl/stack.h \
+  /usr/include/openssl/symhacks.h \
+  /usr/include/openssl/types.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
@@ -932,8 +956,11 @@ CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o: /home/b/coder/src/core/File
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
@@ -986,6 +1013,7 @@ CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o: /home/b/coder/src/core/File
   /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
@@ -993,6 +1021,7 @@ CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o: /home/b/coder/src/core/File
   /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
@@ -1016,9 +1045,11 @@ CMakeFiles/ragger-core.dir/src/core/FileUtils.cpp.o: /home/b/coder/src/core/File
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
-  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h
 
 CMakeFiles/ragger-core.dir/src/core/IndexManager.cpp.o: /home/b/coder/src/core/IndexManager.cpp \
   /home/b/coder/api/ragger_plugin_api.h \
@@ -1089,6 +1120,7 @@ CMakeFiles/ragger-core.dir/src/core/IndexManager.cpp.o: /home/b/coder/src/core/I
   /usr/include/c++/13/bits/shared_ptr_base.h \
   /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/std_mutex.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
@@ -1103,6 +1135,7 @@ CMakeFiles/ragger-core.dir/src/core/IndexManager.cpp.o: /home/b/coder/src/core/I
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
+  /usr/include/c++/13/bits/unique_lock.h \
   /usr/include/c++/13/bits/unique_ptr.h \
   /usr/include/c++/13/bits/unordered_map.h \
   /usr/include/c++/13/bits/uses_allocator.h \
@@ -1111,6 +1144,7 @@ CMakeFiles/ragger-core.dir/src/core/IndexManager.cpp.o: /home/b/coder/src/core/I
   /usr/include/c++/13/bits/vector.tcc \
   /usr/include/c++/13/cctype \
   /usr/include/c++/13/cerrno \
+  /usr/include/c++/13/chrono \
   /usr/include/c++/13/clocale \
   /usr/include/c++/13/codecvt \
   /usr/include/c++/13/cstddef \
@@ -1140,12 +1174,14 @@ CMakeFiles/ragger-core.dir/src/core/IndexManager.cpp.o: /home/b/coder/src/core/I
   /usr/include/c++/13/istream \
   /usr/include/c++/13/limits \
   /usr/include/c++/13/locale \
+  /usr/include/c++/13/mutex \
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/ratio \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/stdlib.h \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
@@ -1161,12 +1197,35 @@ CMakeFiles/ragger-core.dir/src/core/IndexManager.cpp.o: /home/b/coder/src/core/I
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/libintl.h \
+  /usr/include/limits.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/limits.h \
   /usr/include/locale.h \
+  /usr/include/openssl/asn1.h \
+  /usr/include/openssl/asn1err.h \
+  /usr/include/openssl/bio.h \
+  /usr/include/openssl/bioerr.h \
+  /usr/include/openssl/bn.h \
+  /usr/include/openssl/bnerr.h \
+  /usr/include/openssl/core.h \
+  /usr/include/openssl/core_dispatch.h \
+  /usr/include/openssl/crypto.h \
+  /usr/include/openssl/cryptoerr.h \
+  /usr/include/openssl/cryptoerr_legacy.h \
   /usr/include/openssl/e_os2.h \
+  /usr/include/openssl/evp.h \
+  /usr/include/openssl/evperr.h \
   /usr/include/openssl/macros.h \
+  /usr/include/openssl/obj_mac.h \
+  /usr/include/openssl/objects.h \
+  /usr/include/openssl/objectserr.h \
   /usr/include/openssl/opensslv.h \
+  /usr/include/openssl/params.h \
+  /usr/include/openssl/safestack.h \
   /usr/include/openssl/sha.h \
+  /usr/include/openssl/stack.h \
+  /usr/include/openssl/symhacks.h \
+  /usr/include/openssl/types.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/sqlite3.h \
@@ -1187,8 +1246,11 @@ CMakeFiles/ragger-core.dir/src/core/IndexManager.cpp.o: /home/b/coder/src/core/I
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
@@ -1241,6 +1303,7 @@ CMakeFiles/ragger-core.dir/src/core/IndexManager.cpp.o: /home/b/coder/src/core/I
   /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
@@ -1248,6 +1311,7 @@ CMakeFiles/ragger-core.dir/src/core/IndexManager.cpp.o: /home/b/coder/src/core/I
   /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
@@ -1271,9 +1335,11 @@ CMakeFiles/ragger-core.dir/src/core/IndexManager.cpp.o: /home/b/coder/src/core/I
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
-  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h
 
 CMakeFiles/ragger-core.dir/src/core/Logger.cpp.o: /home/b/coder/src/core/Logger.cpp \
   /home/b/coder/src/core/Logger.h \
@@ -1781,7 +1847,33 @@ CMakeFiles/ragger-core.dir/src/core/PluginManager.cpp.o: /home/b/coder/src/core/
 
 /usr/include/openssl/sha.h:
 
+/usr/include/openssl/safestack.h:
+
+/usr/include/openssl/params.h:
+
+/usr/include/openssl/objectserr.h:
+
+/usr/include/openssl/evperr.h:
+
 /usr/include/openssl/e_os2.h:
+
+/usr/include/openssl/cryptoerr_legacy.h:
+
+/usr/include/openssl/crypto.h:
+
+/usr/include/openssl/core.h:
+
+/usr/include/openssl/bnerr.h:
+
+/usr/include/openssl/bioerr.h:
+
+/usr/include/openssl/bio.h:
+
+/usr/include/openssl/asn1err.h:
+
+/usr/include/openssl/asn1.h:
+
+/usr/include/c++/13/stdlib.h:
 
 /home/b/coder/src/core/FileUtils.h:
 
@@ -1967,6 +2059,8 @@ CMakeFiles/ragger-core.dir/src/core/PluginManager.cpp.o: /home/b/coder/src/core/
 
 /usr/include/c++/13/bits/sstream.tcc:
 
+/usr/include/openssl/cryptoerr.h:
+
 /usr/include/c++/13/cwctype:
 
 /usr/include/linux/limits.h:
@@ -2057,11 +2151,15 @@ CMakeFiles/ragger-core.dir/src/core/PluginManager.cpp.o: /home/b/coder/src/core/
 
 /usr/include/c++/13/bits/fstream.tcc:
 
+/usr/include/openssl/obj_mac.h:
+
 /usr/include/c++/13/backward/binders.h:
 
 /home/b/coder/src/core/ConfigManager.cpp:
 
 /usr/include/c++/13/bits/ostream_insert.h:
+
+/usr/include/openssl/stack.h:
 
 /usr/include/c++/13/bits/allocated_ptr.h:
 
@@ -2094,6 +2192,8 @@ CMakeFiles/ragger-core.dir/src/core/PluginManager.cpp.o: /home/b/coder/src/core/
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
 /usr/include/alloca.h:
+
+/usr/include/openssl/symhacks.h:
 
 /usr/include/c++/13/bits/concept_check.h:
 
@@ -2148,6 +2248,8 @@ CMakeFiles/ragger-core.dir/src/core/PluginManager.cpp.o: /home/b/coder/src/core/
 /usr/include/c++/13/bits/ios_base.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:
+
+/usr/include/openssl/evp.h:
 
 /usr/include/c++/13/bits/ostream.tcc:
 
@@ -2235,6 +2337,8 @@ CMakeFiles/ragger-core.dir/src/core/PluginManager.cpp.o: /home/b/coder/src/core/
 
 /usr/include/x86_64-linux-gnu/bits/stdlib.h:
 
+/usr/include/openssl/objects.h:
+
 /usr/include/c++/13/ext/numeric_traits.h:
 
 /usr/include/c++/13/bits/stl_iterator.h:
@@ -2262,6 +2366,8 @@ CMakeFiles/ragger-core.dir/src/core/PluginManager.cpp.o: /home/b/coder/src/core/
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
+
+/usr/include/openssl/bn.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h:
 
@@ -2299,6 +2405,8 @@ CMakeFiles/ragger-core.dir/src/core/PluginManager.cpp.o: /home/b/coder/src/core/
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h:
 
+/usr/include/openssl/core_dispatch.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
@@ -2334,6 +2442,8 @@ CMakeFiles/ragger-core.dir/src/core/PluginManager.cpp.o: /home/b/coder/src/core/
 /usr/include/c++/13/sstream:
 
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
+
+/usr/include/openssl/types.h:
 
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
