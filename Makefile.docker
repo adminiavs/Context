@@ -1,0 +1,242 @@
+# RAGger Docker Makefile
+# This Makefile provides convenient commands for Docker operations
+
+.PHONY: help docker-build docker-dev docker-prod docker-test docker-docs docker-ci docker-clean docker-logs docker-shell
+
+# Default target
+help:
+	@echo "RAGger Docker Commands:"
+	@echo ""
+	@echo "Development:"
+	@echo "  docker-dev          - Start development environment"
+	@echo "  docker-shell        - Open shell in development container"
+	@echo "  docker-build        - Build all Docker images"
+	@echo ""
+	@echo "Production:"
+	@echo "  docker-prod         - Start production environment"
+	@echo "  docker-prod-build   - Build production image only"
+	@echo ""
+	@echo "Testing:"
+	@echo "  docker-test         - Run all tests in container"
+	@echo "  docker-test-build   - Build testing image only"
+	@echo ""
+	@echo "Documentation:"
+	@echo "  docker-docs         - Generate documentation"
+	@echo "  docker-docs-build   - Build documentation image only"
+	@echo ""
+	@echo "CI/CD:"
+	@echo "  docker-ci           - Run CI/CD pipeline"
+	@echo "  docker-ci-build     - Build CI/CD image only"
+	@echo ""
+	@echo "Utilities:"
+	@echo "  docker-logs         - Show container logs"
+	@echo "  docker-clean        - Clean up containers and images"
+	@echo "  docker-status       - Show container status"
+
+# Build all Docker images
+docker-build:
+	@echo "Building all Docker images..."
+	docker-compose build
+
+# Development environment
+docker-dev:
+	@echo "Starting development environment..."
+	docker-compose up -d ragger-dev
+	@echo "Development environment started. Use 'make docker-shell' to access it."
+
+docker-shell:
+	@echo "Opening shell in development container..."
+	docker-compose exec ragger-dev /bin/bash
+
+# Production environment
+docker-prod:
+	@echo "Starting production environment..."
+	docker-compose up -d ragger-prod
+	@echo "Production environment started on port 8080"
+
+docker-prod-build:
+	@echo "Building production image..."
+	docker build --target production -t ragger:production .
+
+# Testing environment
+docker-test:
+	@echo "Running tests in container..."
+	docker-compose up --build ragger-test
+	@echo "Test results available in ./test_results/"
+
+docker-test-build:
+	@echo "Building testing image..."
+	docker build --target testing -t ragger:testing .
+
+# Documentation environment
+docker-docs:
+	@echo "Generating documentation..."
+	docker-compose up --build ragger-docs
+	@echo "Documentation generated in ./docs/generated/"
+
+docker-docs-build:
+	@echo "Building documentation image..."
+	docker build --target documentation -t ragger:documentation .
+
+# CI/CD environment
+docker-ci:
+	@echo "Running CI/CD pipeline..."
+	docker-compose up --build ragger-ci
+	@echo "CI/CD results available in ./ci_results/"
+
+docker-ci-build:
+	@echo "Building CI/CD image..."
+	docker build --target ci -t ragger:ci .
+
+# Utility commands
+docker-logs:
+	@echo "Showing container logs..."
+	docker-compose logs -f
+
+docker-status:
+	@echo "Container status:"
+	docker-compose ps
+
+docker-clean:
+	@echo "Cleaning up Docker resources..."
+	docker-compose down -v
+	docker system prune -f
+	docker volume prune -f
+	@echo "Cleanup completed"
+
+# Advanced Docker commands
+docker-build-dev:
+	@echo "Building development image..."
+	docker build --target development -t ragger:development .
+
+docker-build-base:
+	@echo "Building base image..."
+	docker build --target base -t ragger:base .
+
+docker-build-all:
+	@echo "Building all images with cache..."
+	docker build --target base -t ragger:base .
+	docker build --target development -t ragger:development .
+	docker build --target build -t ragger:build .
+	docker build --target production -t ragger:production .
+	docker build --target testing -t ragger:testing .
+	docker build --target documentation -t ragger:documentation .
+	docker build --target ci -t ragger:ci .
+
+# Development helpers
+docker-dev-build:
+	@echo "Building and starting development environment..."
+	docker-compose up --build -d ragger-dev
+
+docker-dev-stop:
+	@echo "Stopping development environment..."
+	docker-compose stop ragger-dev
+
+docker-dev-restart:
+	@echo "Restarting development environment..."
+	docker-compose restart ragger-dev
+
+# Testing helpers
+docker-test-unit:
+	@echo "Running unit tests only..."
+	docker-compose run --rm ragger-test ./bin/ragger-tests
+
+docker-test-benchmark:
+	@echo "Running benchmarks only..."
+	docker-compose run --rm ragger-test ./bin/ragger-benchmarks
+
+docker-test-memory:
+	@echo "Running memory tests..."
+	docker-compose run --rm ragger-test valgrind --leak-check=full ./bin/ragger-tests
+
+# Production helpers
+docker-prod-stop:
+	@echo "Stopping production environment..."
+	docker-compose stop ragger-prod
+
+docker-prod-restart:
+	@echo "Restarting production environment..."
+	docker-compose restart ragger-prod
+
+docker-prod-logs:
+	@echo "Showing production logs..."
+	docker-compose logs -f ragger-prod
+
+# Database helpers
+docker-db-start:
+	@echo "Starting database service..."
+	docker-compose up -d ragger-db
+
+docker-db-stop:
+	@echo "Stopping database service..."
+	docker-compose stop ragger-db
+
+docker-db-shell:
+	@echo "Opening database shell..."
+	docker-compose exec ragger-db sqlite3 /var/lib/sqlite/ragger.db
+
+# Volume management
+docker-volumes-list:
+	@echo "Docker volumes:"
+	docker volume ls | grep ragger
+
+docker-volumes-clean:
+	@echo "Cleaning up volumes..."
+	docker-compose down -v
+	docker volume rm $(docker volume ls -q | grep ragger) 2>/dev/null || true
+
+# Image management
+docker-images-list:
+	@echo "Docker images:"
+	docker images | grep ragger
+
+docker-images-clean:
+	@echo "Cleaning up images..."
+	docker rmi $(docker images -q | grep ragger) 2>/dev/null || true
+
+# Network management
+docker-network-list:
+	@echo "Docker networks:"
+	docker network ls | grep ragger
+
+docker-network-clean:
+	@echo "Cleaning up networks..."
+	docker network rm ragger_ragger-network 2>/dev/null || true
+
+# Full cleanup
+docker-clean-all:
+	@echo "Performing full cleanup..."
+	docker-compose down -v --rmi all
+	docker system prune -af
+	docker volume prune -f
+	docker network prune -f
+	@echo "Full cleanup completed"
+
+# Health checks
+docker-health:
+	@echo "Checking container health..."
+	docker-compose ps
+	@echo ""
+	@echo "Health check results:"
+	docker-compose exec ragger-prod /app/bin/ragger-console --version || echo "Production container not healthy"
+
+# Performance monitoring
+docker-stats:
+	@echo "Container resource usage:"
+	docker stats --no-stream
+
+# Backup and restore
+docker-backup:
+	@echo "Creating backup..."
+	mkdir -p backups
+	docker-compose exec ragger-prod tar -czf /tmp/ragger-backup.tar.gz /app/data /app/config
+	docker cp ragger-production:/tmp/ragger-backup.tar.gz ./backups/ragger-backup-$(shell date +%Y%m%d-%H%M%S).tar.gz
+	@echo "Backup created in ./backups/"
+
+docker-restore:
+	@echo "Restoring from backup..."
+	@echo "Usage: make docker-restore BACKUP_FILE=backups/ragger-backup-YYYYMMDD-HHMMSS.tar.gz"
+	@if [ -z "$(BACKUP_FILE)" ]; then echo "Please specify BACKUP_FILE"; exit 1; fi
+	docker cp $(BACKUP_FILE) ragger-production:/tmp/ragger-backup.tar.gz
+	docker-compose exec ragger-prod tar -xzf /tmp/ragger-backup.tar.gz -C /
+	@echo "Restore completed"

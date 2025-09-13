@@ -1,0 +1,135 @@
+version: '3.8'
+
+services:
+  # Development environment
+  ragger-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: ragger-development
+    volumes:
+      - .:/workspace
+      - ragger-build-cache:/workspace/build
+      - ragger-vcpkg-cache:/opt/vcpkg
+    environment:
+      - VCPKG_ROOT=/opt/vcpkg
+      - CMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake
+    working_dir: /workspace
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    networks:
+      - ragger-network
+
+  # Production environment
+  ragger-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: ragger-production
+    volumes:
+      - ragger-data:/app/data
+      - ragger-config:/app/config
+    environment:
+      - RAGGER_DATA_DIR=/app/data
+      - RAGGER_CONFIG_DIR=/app/config
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    networks:
+      - ragger-network
+    healthcheck:
+      test: ["CMD", "/app/bin/ragger-console", "--version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Testing environment
+  ragger-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: testing
+    container_name: ragger-testing
+    volumes:
+      - .:/workspace
+      - ragger-test-results:/workspace/test_results
+    environment:
+      - RAGGER_TEST_DATA_DIR=/workspace/test_data
+      - RAGGER_TEST_RESULTS_DIR=/workspace/test_results
+    working_dir: /workspace
+    command: /workspace/scripts/ci/run_all_tests.sh
+    networks:
+      - ragger-network
+
+  # Documentation generation
+  ragger-docs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: documentation
+    container_name: ragger-documentation
+    volumes:
+      - .:/workspace
+      - ragger-docs:/workspace/docs/generated
+    working_dir: /workspace
+    command: /bin/bash -c "cd /workspace && make docs"
+    networks:
+      - ragger-network
+
+  # CI/CD environment
+  ragger-ci:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: ci
+    container_name: ragger-ci
+    volumes:
+      - .:/workspace
+      - ragger-ci-results:/workspace/ci_results
+    environment:
+      - CI=true
+      - RAGGER_CI_BUILD=1
+    working_dir: /workspace
+    command: /workspace/scripts/ci/run_all_tests.sh
+    networks:
+      - ragger-network
+
+  # Database service (for future use)
+  ragger-db:
+    image: sqlite:latest
+    container_name: ragger-database
+    volumes:
+      - ragger-db-data:/var/lib/sqlite
+    environment:
+      - SQLITE_DATABASE=ragger.db
+    networks:
+      - ragger-network
+
+volumes:
+  ragger-build-cache:
+    driver: local
+  ragger-vcpkg-cache:
+    driver: local
+  ragger-data:
+    driver: local
+  ragger-config:
+    driver: local
+  ragger-test-results:
+    driver: local
+  ragger-docs:
+    driver: local
+  ragger-ci-results:
+    driver: local
+  ragger-db-data:
+    driver: local
+
+networks:
+  ragger-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
