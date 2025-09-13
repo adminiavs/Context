@@ -134,6 +134,14 @@ public:
 
             // Log section
             ImGui::Text("Activity Log:");
+            if (ImGui::Button("Copy Log")) {
+                copyLogToClipboard();
+            }
+            ImGui::SameLine();
+            if (ImGui::Button("Clear Log")) {
+                m_logMessages.clear();
+                m_logMessages.push_back("Log cleared");
+            }
             ImGui::BeginChild("Log", ImVec2(0, 300), true);
             for (const auto& msg : m_logMessages) {
                 ImGui::Text("%s", msg.c_str());
@@ -321,6 +329,19 @@ private:
         for (const auto& plugin : plugins) {
             ImGui::BulletText("✓ %s (Available)", plugin.c_str());
         }
+    }
+    
+    void copyLogToClipboard() {
+        std::string logText;
+        for (const auto& msg : m_logMessages) {
+            logText += msg + "\n";
+        }
+        
+        // Use ImGui's clipboard functionality
+        ImGui::SetClipboardText(logText.c_str());
+        
+        // Add a confirmation message to the log
+        m_logMessages.push_back("✓ Log copied to clipboard");
     }
     
     void cleanup() {
