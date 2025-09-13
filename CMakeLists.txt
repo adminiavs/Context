@@ -15,7 +15,37 @@ endif()
 if(MSVC)
     add_compile_options(/W4 /permissive-)
 else()
-    add_compile_options(-Wall -Wextra -Wpedantic)
+    add_compile_options(-Wall -Wextra -Wpedantic -Wno-unused-parameter)
+endif()
+
+# Memory analysis tools
+option(RAGGER_ENABLE_ASAN "Enable AddressSanitizer" OFF)
+option(RAGGER_ENABLE_MSAN "Enable MemorySanitizer" OFF)
+option(RAGGER_ENABLE_TSAN "Enable ThreadSanitizer" OFF)
+option(RAGGER_ENABLE_UBSAN "Enable UndefinedBehaviorSanitizer" OFF)
+
+if(RAGGER_ENABLE_ASAN)
+    add_compile_options(-fsanitize=address -fno-omit-frame-pointer)
+    add_link_options(-fsanitize=address)
+    message(STATUS "AddressSanitizer enabled")
+endif()
+
+if(RAGGER_ENABLE_MSAN)
+    add_compile_options(-fsanitize=memory -fno-omit-frame-pointer)
+    add_link_options(-fsanitize=memory)
+    message(STATUS "MemorySanitizer enabled")
+endif()
+
+if(RAGGER_ENABLE_TSAN)
+    add_compile_options(-fsanitize=thread)
+    add_link_options(-fsanitize=thread)
+    message(STATUS "ThreadSanitizer enabled")
+endif()
+
+if(RAGGER_ENABLE_UBSAN)
+    add_compile_options(-fsanitize=undefined -fno-omit-frame-pointer)
+    add_link_options(-fsanitize=undefined)
+    message(STATUS "UndefinedBehaviorSanitizer enabled")
 endif()
 
 # Output directories
@@ -23,17 +53,27 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
+# vcpkg integration
+if(DEFINED ENV{VCPKG_ROOT} AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+    set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
+endif()
+
 # Find required packages
 find_package(Threads REQUIRED)
 
-# SQLite3 - try to find system version, fallback to none
-find_package(SQLite3)
+# Core dependencies
+find_package(SQLite3 REQUIRED)
+find_package(spdlog QUIET)
+find_package(nlohmann_json QUIET)
 
-# spdlog - try to find system version, fallback to none
-find_package(spdlog)
+# Optional GUI dependencies
+find_package(glfw3 QUIET)
+find_package(OpenGL QUIET)
+find_package(imgui QUIET)
 
-# nlohmann/json - try to find system version, fallback to none
-find_package(nlohmann_json)
+# Testing dependencies
+find_package(GTest QUIET)
+find_package(benchmark QUIET)
 
 # Include directories
 include_directories(
@@ -180,10 +220,24 @@ target_link_libraries(ragger-working-gui
         GL
 )
 
-if(IMGUI_FOUND)
-    target_link_libraries(ragger-working-gui PRIVATE ${IMGUI_LIBRARIES})
-    target_include_directories(ragger-working-gui PRIVATE ${IMGUI_INCLUDE_DIRS})
+# Check for Dear ImGui for working GUI
+find_path(IMGUI_WORKING_INCLUDE_DIR imgui.h
+    PATHS /usr/include /usr/local/include
+    PATH_SUFFIXES imgui
+)
+
+find_path(IMGUI_WORKING_IMPL_GLFW_DIR imgui_impl_glfw.h
+    PATHS /usr/include /usr/local/include
+    PATH_SUFFIXES imgui/backends
+)
+
+if(IMGUI_WORKING_INCLUDE_DIR AND IMGUI_WORKING_IMPL_GLFW_DIR)
+    target_link_libraries(ragger-working-gui PRIVATE imgui stb)
+    target_include_directories(ragger-working-gui PRIVATE ${IMGUI_WORKING_INCLUDE_DIR} ${IMGUI_WORKING_IMPL_GLFW_DIR})
     target_compile_definitions(ragger-working-gui PRIVATE RAGGER_HAS_IMGUI)
+    message(STATUS "Working GUI: Dear ImGui found - GUI mode enabled")
+else()
+    message(STATUS "Working GUI: Dear ImGui not found - console mode only")
 endif()
 
 target_include_directories(ragger-working-gui PRIVATE

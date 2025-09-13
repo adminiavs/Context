@@ -268,6 +268,8 @@ std::string CodeEditor::getContent() const {
 }
 
 void CodeEditor::render(float width, float height) {
+    (void)width;  // Suppress unused parameter warning
+    (void)height; // Suppress unused parameter warning
     // ImGui::BeginChild("CodeEditor", ImVec2(width, height), true);
     
     // Render text with syntax highlighting
@@ -291,6 +293,7 @@ void CodeEditor::renderTextWithHighlighting() {
 }
 
 void CodeEditor::applySyntaxHighlighting(const std::string& text) {
+    (void)text; // Suppress unused parameter warning
     // In a real implementation, this would apply syntax highlighting
 }
 
@@ -327,6 +330,8 @@ std::string PromptPanel::getContent() const {
 }
 
 void PromptPanel::render(float width, float height) {
+    (void)width;  // Suppress unused parameter warning
+    (void)height; // Suppress unused parameter warning
     // ImGui::BeginChild("PromptPanel", ImVec2(width, height), true);
     
     // Render token count if enabled
@@ -355,6 +360,7 @@ void PromptPanel::showRawPreview(bool show) {
 
 void PromptPanel::renderTokenCount() {
     int tokens = estimateTokenCount(m_content);
+    (void)tokens; // Suppress unused variable warning
     // ImGui::Text("Tokens: %d", tokens);
 }
 

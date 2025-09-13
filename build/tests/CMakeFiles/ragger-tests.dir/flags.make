@@ -6,5 +6,5 @@ CXX_DEFINES = -DRAGGER_HAS_SQLITE
 
 CXX_INCLUDES = -I/home/b/coder/api -I/home/b/coder/src/core
 
-CXX_FLAGS = -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -DGTEST_HAS_PTHREAD=1
+CXX_FLAGS = -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -Wno-unused-parameter -DGTEST_HAS_PTHREAD=1
 

@@ -299,6 +299,10 @@ private:
 private:
     // Helper function to generate comprehensive context (simplified version)
     std::string generateComprehensiveContext(const std::string& filePath, const std::string& query, int startLine, int endLine) {
+    (void)filePath;   // Suppress unused parameter warning
+    (void)query;      // Suppress unused parameter warning
+    (void)startLine;  // Suppress unused parameter warning
+    (void)endLine;    // Suppress unused parameter warning
         std::string context = "=== COMPREHENSIVE RAG CONTEXT ===\n\n";
         
         // Pillar 1: Git Context

@@ -4,11 +4,15 @@
 #include <thread>
 #include <chrono>
 
+#ifdef RAGGER_HAS_IMGUI
 // Dear ImGui headers
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 #include <GLFW/glfw3.h>
+#endif
+
+#ifdef RAGGER_HAS_IMGUI
 
 namespace Ragger {
 namespace GUI {
@@ -68,8 +72,9 @@ public:
         ImGui::CreateContext();
         ImGuiIO& io = ImGui::GetIO();
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-        io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-        io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+        // Enable basic features (docking requires newer ImGui version)
+        // io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+        // io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
         // Setup Dear ImGui style
         ImGui::StyleColorsDark();
@@ -93,30 +98,22 @@ public:
             ImGui_ImplGlfw_NewFrame();
             ImGui::NewFrame();
 
-            // Setup docking
-            ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
-            ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
+            // Basic window setup (docking requires newer ImGui version)
+            ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar;
             
-            const ImGuiViewport* viewport = ImGui::GetMainViewport();
-            ImGui::SetNextWindowPos(viewport->WorkPos);
-            ImGui::SetNextWindowSize(viewport->WorkSize);
-            ImGui::SetNextWindowViewport(viewport->ID);
+            // Set window position and size
+            ImGui::SetNextWindowPos(ImVec2(0, 0));
+            ImGui::SetNextWindowSize(ImVec2(1200, 800));
             ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
             ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
             window_flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
             window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
 
-            if (dockspace_flags & ImGuiDockNodeFlags_PassthruCentralNode)
-                window_flags |= ImGuiWindowFlags_NoBackground;
-
+            // Basic window without docking
             ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-            ImGui::Begin("DockSpace", nullptr, window_flags);
+            ImGui::Begin("RAGger GUI", nullptr, window_flags);
             ImGui::PopStyleVar();
             ImGui::PopStyleVar(2);
-
-            // Submit the DockSpace
-            ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
-            ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
 
             // Menu bar
             if (ImGui::BeginMenuBar()) {
@@ -187,13 +184,13 @@ public:
             glClear(GL_COLOR_BUFFER_BIT);
             ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-            // Update and Render additional Platform Windows
-            if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
-                GLFWwindow* backup_current_context = glfwGetCurrentContext();
-                ImGui::UpdatePlatformWindows();
-                ImGui::RenderPlatformWindowsDefault();
-                glfwMakeContextCurrent(backup_current_context);
-            }
+            // Viewport support requires newer ImGui version
+            // if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
+            //     GLFWwindow* backup_current_context = glfwGetCurrentContext();
+            //     ImGui::UpdatePlatformWindows();
+            //     ImGui::RenderPlatformWindowsDefault();
+            //     glfwMakeContextCurrent(backup_current_context);
+            // }
 
             glfwSwapBuffers(m_window);
         }
@@ -208,8 +205,14 @@ private:
         ImGui::Separator();
         
         ImGui::Text("Enter your code or question:");
-        ImGui::InputTextMultiline("##input", &m_inputText, ImVec2(-1, 300), 
-                                 ImGuiInputTextFlags_AllowTabInput);
+        char inputBuffer[4096];
+        strncpy(inputBuffer, m_inputText.c_str(), sizeof(inputBuffer) - 1);
+        inputBuffer[sizeof(inputBuffer) - 1] = '\0';
+        
+        if (ImGui::InputTextMultiline("##input", inputBuffer, sizeof(inputBuffer), 
+                                     ImVec2(-1, 300), ImGuiInputTextFlags_AllowTabInput)) {
+            m_inputText = inputBuffer;
+        }
         
         if (ImGui::Button("Process with RAG", ImVec2(-1, 0))) {
             if (!m_inputText.empty()) {
@@ -385,3 +388,12 @@ int main() {
     std::cout << "RAGger GUI Application finished" << std::endl;
     return 0;
 }
+
+#else
+// Fallback implementation when Dear ImGui is not available
+int main() {
+    std::cout << "RAGger Working GUI requires Dear ImGui support" << std::endl;
+    std::cout << "Please install Dear ImGui or use ragger-simple-gui instead" << std::endl;
+    return 1;
+}
+#endif

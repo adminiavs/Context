@@ -1,0 +1,76 @@
+{
+  "name": "ragger",
+  "version": "1.0.0",
+  "description": "High-performance C++ RAG pre-processor for AI-powered code analysis",
+  "homepage": "https://github.com/adminiavs/Context",
+  "license": "MIT",
+  "dependencies": [
+    {
+      "name": "sqlite3",
+      "features": ["tool"]
+    },
+    {
+      "name": "spdlog",
+      "features": ["fmt"]
+    },
+    {
+      "name": "nlohmann-json"
+    },
+    {
+      "name": "glfw3"
+    },
+    {
+      "name": "opengl"
+    },
+    {
+      "name": "imgui",
+      "features": ["glfw-binding", "opengl3-binding"]
+    },
+    {
+      "name": "stb"
+    },
+    {
+      "name": "gtest",
+      "features": ["gmock"]
+    },
+    {
+      "name": "benchmark"
+    },
+    {
+      "name": "threads"
+    },
+    {
+      "name": "filesystem"
+    }
+  ],
+  "features": {
+    "gui": {
+      "description": "Enable GUI support with Dear ImGui",
+      "dependencies": [
+        "glfw3",
+        "opengl",
+        "imgui",
+        "stb"
+      ]
+    },
+    "testing": {
+      "description": "Enable testing framework",
+      "dependencies": [
+        "gtest"
+      ]
+    },
+    "benchmarking": {
+      "description": "Enable benchmarking tools",
+      "dependencies": [
+        "benchmark"
+      ]
+    },
+    "logging": {
+      "description": "Enable structured logging",
+      "dependencies": [
+        "spdlog"
+      ]
+    }
+  },
+  "builtin-baseline": "2024.01.12"
+}

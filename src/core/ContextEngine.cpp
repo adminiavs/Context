@@ -88,6 +88,8 @@ int ContextEngine::getMaxContextTokens() const {
 std::string ContextEngine::buildPromptFromTemplate(const std::string& templateName,
                                                  const ContextRequest* request,
                                                  const ContextResponse* contextData) {
+    (void)request;    // Suppress unused parameter warning
+    (void)contextData; // Suppress unused parameter warning
     std::string tmpl = getTemplate(templateName);
     if (tmpl.empty()) {
         tmpl = getTemplate("default");

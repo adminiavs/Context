@@ -298,6 +298,8 @@ int IndexManager::insertFileRecord(const fs::path& filePath, const std::string& 
 
 int IndexManager::insertCodeBlock(const CodeBlock* block, const fs::path& filePath) {
     // TODO: Implement code block insertion
+    (void)block;    // Suppress unused parameter warning
+    (void)filePath; // Suppress unused parameter warning
     return RAGGER_SUCCESS;
 }
 
@@ -365,6 +367,7 @@ std::string IndexManager::calculateFileHash(const fs::path& filePath) {
         if (hashIt != fileHashes_.end() && timeIt != hashCache_.end()) {
             // Check if file modification time has changed (simplified check)
             auto fileTime = fs::last_write_time(filePath);
+            (void)fileTime; // Suppress unused variable warning
             auto currentTime = std::chrono::steady_clock::now();
             
             // If cache is less than 5 minutes old, use cached hash

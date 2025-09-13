@@ -285,6 +285,12 @@ IMGUI_IMPL_GLFW_DIR:PATH=/usr/include/imgui/backends
 IMGUI_INCLUDE_DIR:PATH=/usr/include/imgui
 
 //Path to a file.
+IMGUI_WORKING_IMPL_GLFW_DIR:PATH=/usr/include/imgui/backends
+
+//Path to a file.
+IMGUI_WORKING_INCLUDE_DIR:PATH=/usr/include/imgui
+
+//Path to a file.
 OPENGL_EGL_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a file.
@@ -326,6 +332,18 @@ PKG_CONFIG_ARGN:STRING=
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
+//Enable AddressSanitizer
+RAGGER_ENABLE_ASAN:BOOL=OFF
+
+//Enable MemorySanitizer
+RAGGER_ENABLE_MSAN:BOOL=OFF
+
+//Enable ThreadSanitizer
+RAGGER_ENABLE_TSAN:BOOL=OFF
+
+//Enable UndefinedBehaviorSanitizer
+RAGGER_ENABLE_UBSAN:BOOL=OFF
+
 //Value Computed by CMake
 RAGger_BINARY_DIR:STATIC=/home/b/coder/build
 
@@ -346,6 +364,9 @@ benchmark_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/benchmark
 
 //The directory containing a CMake configuration file for glfw3.
 glfw3_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/glfw3
+
+//The directory containing a CMake configuration file for imgui.
+imgui_DIR:PATH=imgui_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for nlohmann_json.
 nlohmann_json_DIR:PATH=nlohmann_json_DIR-NOTFOUND

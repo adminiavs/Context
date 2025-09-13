@@ -6,5 +6,5 @@ CXX_DEFINES = -DRAGGER_HAS_SQLITE -Dcpp_parser_EXPORTS
 
 CXX_INCLUDES = -I/home/b/coder/api -I/home/b/coder/src/core
 
-CXX_FLAGS = -O3 -DNDEBUG -std=c++17 -fPIC -Wall -Wextra -Wpedantic
+CXX_FLAGS = -O3 -DNDEBUG -std=c++17 -fPIC -Wall -Wextra -Wpedantic -Wno-unused-parameter
 

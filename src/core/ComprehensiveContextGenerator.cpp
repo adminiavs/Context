@@ -117,6 +117,9 @@ std::string ComprehensiveContextGenerator::generateComprehensiveContext(
 std::string ComprehensiveContextGenerator::generateGitContext(const std::string& filePath, int startLine, int endLine) {
     // For now, we'll use a simplified implementation
     // In a full implementation, this would call the GitContextPlugin
+    (void)filePath;   // Suppress unused parameter warning
+    (void)startLine;  // Suppress unused parameter warning
+    (void)endLine;    // Suppress unused parameter warning
     
     std::string result = "### GIT CONTEXT\n";
     
@@ -132,6 +135,7 @@ std::string ComprehensiveContextGenerator::generateGitContext(const std::string&
 std::string ComprehensiveContextGenerator::generateStaticAnalysisContext(const std::string& filePath) {
     // For now, we'll use a simplified implementation
     // In a full implementation, this would call the StaticAnalysisPlugin
+    (void)filePath; // Suppress unused parameter warning
     
     std::string result = "### PROJECT STANDARDS & ANALYSIS\n";
     
@@ -151,6 +155,8 @@ std::string ComprehensiveContextGenerator::generateStaticAnalysisContext(const s
 std::string ComprehensiveContextGenerator::generateDocumentationContext(const std::string& filePath, const std::string& query) {
     // For now, we'll use a simplified implementation
     // In a full implementation, this would call the DocsPlugin
+    (void)filePath; // Suppress unused parameter warning
+    (void)query;    // Suppress unused parameter warning
     
     std::string result = "### RELEVANT DOCUMENTATION\n";
     

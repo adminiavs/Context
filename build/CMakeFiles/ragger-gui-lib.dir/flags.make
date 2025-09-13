@@ -6,5 +6,5 @@ CXX_DEFINES = -DRAGGER_HAS_IMGUI -DRAGGER_HAS_SQLITE
 
 CXX_INCLUDES = -I/home/b/coder/api -I/home/b/coder/src/ui -I/home/b/coder/src/core -I/usr/include/imgui -I/usr/include/stb
 
-CXX_FLAGS = -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic
+CXX_FLAGS = -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -Wno-unused-parameter
 
