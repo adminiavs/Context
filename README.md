@@ -1,5 +1,9 @@
 # RAGger - RAG Pre-processor for AI Development
 
+<div align="center">
+  <img src="ragger.png" alt="RAGger Logo" width="200" height="200">
+</div>
+
 RAGger is a high-performance C++ RAG (Retrieval-Augmented Generation) pre-processor designed for AI-powered code analysis and development assistance.
 
 ## Features
